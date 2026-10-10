@@ -4,7 +4,7 @@
 
 Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistungsfähiger zu werden. Entwickelt von einem Sportpsychologen (Praxis im Leistungssport, Master Sportpsychologie).
 
-**Status:** Designphase. Es gibt noch keinen Code. Technologie-Stack und Zielplattform sind noch nicht entschieden.
+**Status:** Designphase. Es gibt noch keinen Code. Zielplattform: iOS und Android (beschlossen). Technologie-Stack ist noch nicht entschieden.
 
 ## Arbeitsregeln für Claude Code
 
@@ -95,6 +95,6 @@ Umsetzen, was technisch möglich ist: Songs in Routinen abspielen und mit eigene
 - Antwortoptionen für den Check-out
 - Name für Bereich 4
 - Umfang der ersten Version (Vorschlag: Check-in, Maßnahmenvorschlag, Check-out, Übungen mit einigen Audios, einfacher Verlauf; Routinen-Baukasten, Spotify, eigene Aufnahmen und automatische Mustererkennung später)
-- Zielplattform (iOS, Android, Web-App) und Technologie-Stack
+- Technologie-Stack (Zielplattform iOS und Android ist beschlossen)
 - Speicherort der Daten (nur auf dem Gerät oder verschlüsselte Cloud)
 - Weitere geplante Ideen ohne festes Konzept: Ziele nach Zielkategorien, Wochenreflexion
