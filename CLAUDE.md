@@ -4,7 +4,7 @@
 
 Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistungsfähiger zu werden. Entwickelt von einem Sportpsychologen (Praxis im Leistungssport, Master Sportpsychologie).
 
-**Status:** Designphase. Es gibt noch keinen Code. Zielplattform: iOS und Android (beschlossen). Technologie-Stack ist noch nicht entschieden.
+**Status:** Designphase. Es gibt noch keinen Code. Zielplattform: iOS und Android (beschlossen). Technologie-Stack: React Native mit Expo (beschlossen).
 
 ## Arbeitsregeln für Claude Code
 
@@ -25,6 +25,14 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 - Spotify-Verbindung freiwillig und klar als Datenweitergabe an Drittanbieter gekennzeichnet.
 - Auswertung und Mustererkennung möglichst lokal auf dem Gerät oder Ende-zu-Ende-verschlüsselt.
 - Vor einem echten Start ist eine rechtliche Prüfung vorgesehen.
+
+## Technologie-Stack
+
+- **React Native mit Expo**, Sprache TypeScript (beschlossen am 22.10.2026).
+- Gründe: einfacher Einstieg, Testen auf dem eigenen Handy per Expo Go, iOS-Builds in der Cloud (EAS) ohne Mac.
+- Datenschutz: keine Analyse-, Tracking- oder Crash-Reporting-Pakete ohne ausdrückliche Entscheidung. Jedes neue Paket vor dem Einbau darauf prüfen, ob es Daten an Dritte sendet.
+- Beim Cloud-Build (EAS) wird nur der Programmcode hochgeladen, keine Daten von Athlet:innen.
+- Spotify später nur über Community-Pakete möglich, dafür ist mehr Aufwand einzuplanen.
 
 ## Tagesablauf
 
@@ -95,6 +103,5 @@ Umsetzen, was technisch möglich ist: Songs in Routinen abspielen und mit eigene
 - Antwortoptionen für den Check-out
 - Name für Bereich 4
 - Umfang der ersten Version (Vorschlag: Check-in, Maßnahmenvorschlag, Check-out, Übungen mit einigen Audios, einfacher Verlauf; Routinen-Baukasten, Spotify, eigene Aufnahmen und automatische Mustererkennung später)
-- Technologie-Stack (Zielplattform iOS und Android ist beschlossen)
 - Speicherort der Daten (nur auf dem Gerät oder verschlüsselte Cloud)
 - Weitere geplante Ideen ohne festes Konzept: Ziele nach Zielkategorien, Wochenreflexion
