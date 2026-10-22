@@ -4,7 +4,7 @@
 
 Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistungsfähiger zu werden. Entwickelt von einem Sportpsychologen (Praxis im Leistungssport, Master Sportpsychologie).
 
-**Status:** Designphase. Es gibt noch keinen Code. Zielplattform: iOS und Android (beschlossen). Technologie-Stack: React Native mit Expo (beschlossen).
+**Status:** Designphase. Es gibt ein lauffähiges Grundgerüst (Expo-Projekt mit Startbildschirm), noch ohne Funktionen. Zielplattform: iOS und Android (beschlossen). Technologie-Stack: React Native mit Expo (beschlossen).
 
 ## Arbeitsregeln für Claude Code
 
@@ -33,6 +33,8 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 - Datenschutz: keine Analyse-, Tracking- oder Crash-Reporting-Pakete ohne ausdrückliche Entscheidung. Jedes neue Paket vor dem Einbau darauf prüfen, ob es Daten an Dritte sendet.
 - Beim Cloud-Build (EAS) wird nur der Programmcode hochgeladen, keine Daten von Athlet:innen.
 - Spotify später nur über Community-Pakete möglich, dafür ist mehr Aufwand einzuplanen.
+- Projekt liegt direkt im Hauptordner des Repos (Vorlage `blank-typescript`, Expo SDK 58). Nur iOS und Android, keine Web-Version.
+- Neue Pakete immer mit `npx expo install <paket>` hinzufügen. Testanleitung steht in `README.md`.
 
 ## Tagesablauf
 
