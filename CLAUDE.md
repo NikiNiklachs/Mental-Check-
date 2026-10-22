@@ -92,7 +92,7 @@ Umsetzen, was technisch möglich ist: Songs in Routinen abspielen und mit eigene
 - Maßnahmenvorschlag nach dem Check-in (Annehmen/Ablehnen wird gespeichert)
 - Check-out
 - Übungen: einige Audios, selbst aufgenommen vom Entwickler
-- Kalender: selbst eintragen und `.ics`-Import
+- Kalender: selbst eintragen und `.ics` (Datei-Import und Abo-Link)
 - Erinnerung an den Check-out: optional und abschaltbar, als lokale Benachrichtigung auf dem Gerät (kein Server)
 - Einfacher Verlauf
 - Alle Daten nur lokal und verschlüsselt auf dem Gerät
@@ -110,7 +110,6 @@ Umsetzen, was technisch möglich ist: Songs in Routinen abspielen und mit eigene
   - wenig oder schlechter Schlaf → Hinweis auf Regeneration, abends Entspannungsaudio
 - Antwortoptionen für den Check-out
 - Name für Bereich 4
-- .ics in Version 1: nur einmaliger Datei-Import oder auch Abo-Link?
 - Zielplattform (iOS, Android, Web-App) und Technologie-Stack
 - Speicherort der Daten (nur auf dem Gerät oder verschlüsselte Cloud)
 - Weitere geplante Ideen ohne festes Konzept: Ziele nach Zielkategorien, Wochenreflexion
