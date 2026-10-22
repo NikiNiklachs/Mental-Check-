@@ -83,6 +83,22 @@ Jeder Eintrag hat eine Kategorie (z. B. Training, Wettkampf, Regeneration).
 
 Umsetzen, was technisch möglich ist: Songs in Routinen abspielen und mit eigenen Sprachaufnahmen kombinieren. Gleichzeitiges Überlagern von eigener Aufnahme und Spotify-Song ist voraussichtlich nicht erlaubt, daher nacheinander abspielen (z. B. erst Self-Talk, dann Song).
 
+## Umfang der ersten Version (beschlossen 2026-10-22)
+
+**In Version 1:**
+- Datenschutz beim ersten Start: Einwilligung, Altersabfrage, Widerruf mit vollständiger Löschung
+- Check-in mit den täglichen Fragen, am Wettkampftag zusätzlich Nervosität
+- Tagesart im Check-in: Geht aus dem Kalender nicht hervor, welche Art Tag ist, fragt der Check-in per Ankreuzen „Pausentag, Spieltag oder Trainingstag?“ (Annahme: Spieltag = Wettkampf, Pausentag = Regeneration)
+- Maßnahmenvorschlag nach dem Check-in (Annehmen/Ablehnen wird gespeichert)
+- Check-out
+- Übungen: einige Audios, selbst aufgenommen vom Entwickler
+- Kalender: selbst eintragen und `.ics`-Import
+- Erinnerung an den Check-out: optional und abschaltbar, als lokale Benachrichtigung auf dem Gerät (kein Server)
+- Einfacher Verlauf
+- Alle Daten nur lokal und verschlüsselt auf dem Gerät
+
+**Später:** Routinen-Baukasten, Spotify, eigene Sprachaufnahmen der Athlet:innen, automatische Mustererkennung, Excel-Import, Handy-Kalender verbinden
+
 ## Offene Punkte
 
 - Zuordnung Check-in-Wert → vorgeschlagene Maßnahme. Bisheriger Entwurf (noch nicht beschlossen):
@@ -94,7 +110,7 @@ Umsetzen, was technisch möglich ist: Songs in Routinen abspielen und mit eigene
   - wenig oder schlechter Schlaf → Hinweis auf Regeneration, abends Entspannungsaudio
 - Antwortoptionen für den Check-out
 - Name für Bereich 4
-- Umfang der ersten Version (Vorschlag: Check-in, Maßnahmenvorschlag, Check-out, Übungen mit einigen Audios, einfacher Verlauf; Routinen-Baukasten, Spotify, eigene Aufnahmen und automatische Mustererkennung später)
+- .ics in Version 1: nur einmaliger Datei-Import oder auch Abo-Link?
 - Zielplattform (iOS, Android, Web-App) und Technologie-Stack
 - Speicherort der Daten (nur auf dem Gerät oder verschlüsselte Cloud)
 - Weitere geplante Ideen ohne festes Konzept: Ziele nach Zielkategorien, Wochenreflexion
