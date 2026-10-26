@@ -4,7 +4,7 @@
 
 Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistungsfähiger zu werden. Entwickelt von einem Sportpsychologen (Praxis im Leistungssport, Master Sportpsychologie).
 
-**Status:** Designphase. Es gibt ein lauffähiges Grundgerüst (Expo-Projekt mit Startbildschirm), noch ohne Funktionen. Zielplattform: iOS und Android (beschlossen). Technologie-Stack: React Native mit Expo (beschlossen).
+**Status:** Designphase. Es gibt ein lauffähiges Grundgerüst mit Datenschutz-Start und Check-in. Zielplattform: iOS und Android (beschlossen). Technologie-Stack: React Native mit Expo (beschlossen).
 
 ## Arbeitsregeln für Claude Code
 
@@ -35,6 +35,19 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 - Spotify später nur über Community-Pakete möglich, dafür ist mehr Aufwand einzuplanen.
 - Projekt liegt direkt im Hauptordner des Repos (Vorlage `blank-typescript`, Expo SDK 58). Nur iOS und Android, keine Web-Version.
 - Neue Pakete immer mit `npx expo install <paket>` hinzufügen. Testanleitung steht in `README.md`.
+
+## Umsetzung Datenschutz-Start und Check-in (Stand 26.10.2026)
+
+- Speicher: `expo-secure-store` (iOS Keychain / Android Keystore), Option „nur dieses Gerät“, also kein Backup und keine Übertragung. Ein Eintrag pro Check-in-Tag (`checkin_JJJJ-MM-TT`), dazu `einwilligung` und `erster_tag`. Code in `src/speicher.ts`.
+- Widerruf löscht alle Tage vom ersten Tag bis heute, danach Einwilligung und ersten Tag.
+- Wo kein sicherer Speicher da ist (z. B. Web-Vorschau in Snack), läuft die App im Testmodus und speichert nur im Arbeitsspeicher.
+- Altersabfrage nur als Gruppe („16 oder älter“ / „unter 16“), kein Geburtsdatum (datensparsam). Elternzustimmung per Ankreuzen, ohne Nachweis (rechtlich zu prüfen).
+- Navigation vorerst ohne Paket, einfache Seitenwechsel in `App.tsx`. Die Leiste unten kommt später.
+- Tagesart wird im Check-in immer abgefragt, bis der Kalender da ist.
+- Skalenworte: Energie, Motivation, Fokus, Nervosität „sehr niedrig … sehr hoch“; Stimmung und Schlafqualität „sehr schlecht … sehr gut“.
+- Schlafdauer per Minus/Plus in halben Stunden (0–16 Std., Start bei 8).
+- Check-in öffnet sich beim ersten Öffnen des Tages von selbst und lässt sich mit „Später machen“ verschieben.
+- Snack-Version: alle Dateien zu einer `App.tsx` zusammengefügt (ohne `expo-status-bar`).
 
 ## Tagesablauf
 

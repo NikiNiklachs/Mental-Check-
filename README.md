@@ -31,6 +31,15 @@ Handy und Computer müssen im selben WLAN sein. Klappt das nicht (z. B. im Verei
 
 Änderungen am Code erscheinen nach dem Speichern automatisch auf dem Handy. Beenden mit `Strg + C` im Terminal.
 
+## Testen ohne Computer (Expo Snack, z. B. auf dem iPad)
+
+1. Auf https://snack.expo.dev ein neues Snack öffnen.
+2. Den gesamten Inhalt der Datei `App.tsx` im Snack durch die Snack-Version ersetzen (eine einzige Datei mit allen Bildschirmen).
+3. Snack meldet, dass `expo-secure-store` fehlt: auf „Add dependency“ tippen.
+4. Rechts „iOS“ oder „Android“ wählen oder den QR-Code mit Expo Go öffnen.
+
+In der Web-Vorschau gibt es keinen sicheren Speicher. Die App zeigt dann „Testmodus“ und vergisst die Eingaben beim Neuladen. Mit Expo Go auf dem Gerät wird verschlüsselt gespeichert.
+
 ## Datenschutz-Hinweis zur Entwicklung
 
 - Beim Testen mit Expo Go läuft der Code vom eigenen Computer aufs Handy. Es werden keine Daten von Athlet:innen verarbeitet.
