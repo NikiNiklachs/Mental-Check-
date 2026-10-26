@@ -46,7 +46,9 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 - Tagesart wird im Check-in immer abgefragt, bis der Kalender da ist.
 - Skalenworte: Energie, Motivation, Fokus, Nervosität „sehr niedrig … sehr hoch“; Stimmung und Schlafqualität „sehr schlecht … sehr gut“.
 - Schlafdauer per Minus/Plus in halben Stunden (0–16 Std., Start bei 8).
-- Check-in öffnet sich beim ersten Öffnen des Tages von selbst und lässt sich mit „Später machen“ verschieben.
+- Check-in öffnet sich beim ersten Öffnen des Tages von selbst und lässt sich mit „Später“ verschieben.
+- Check-in zeigt eine Frage pro Seite, Antworten untereinander. Nach dem Ankreuzen geht es automatisch weiter. Jede Frage hat „Zurück“ und „Überspringen“; übersprungene Fragen fehlen im gespeicherten Check-in. Am Ende „Check-in speichern“.
+- Design: warm (Creme-Hintergrund, Terrakotta-Akzent), Farben zentral in `src/ui.tsx`.
 - Snack-Version: alle Dateien zu einer `App.tsx` zusammengefügt (ohne `expo-status-bar`).
 
 ## Tagesablauf

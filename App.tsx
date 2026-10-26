@@ -13,6 +13,7 @@ import {
   heute,
   istSichererSpeicherDa,
 } from './src/speicher';
+import { farben } from './src/ui';
 
 type Seite = 'laden' | 'datenschutz' | 'start' | 'checkin' | 'einstellungen';
 
@@ -104,7 +105,7 @@ export default function App() {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
+    <View style={{ flex: 1, backgroundColor: farben.hintergrund }}>
       {inhalt}
       <StatusBar style="auto" />
     </View>

@@ -25,7 +25,7 @@ export default function Start({ checkInHeute, testModus, onCheckIn, onEinstellun
 
       {checkInHeute ? (
         <View style={styles.hinweis}>
-          <Text style={styles.zwischentitel}>Check-in erledigt ✓</Text>
+          <Text style={[styles.zwischentitel, { marginTop: 0 }]}>Check-in erledigt ✓</Text>
           <Text style={styles.text}>Danke! Dein Check-in für heute ist gespeichert.</Text>
         </View>
       ) : (

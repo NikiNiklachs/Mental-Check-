@@ -1,23 +1,53 @@
 import { useState } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { CheckIn as CheckInDaten, Tagesart, checkInSpeichern, heute } from '../speicher';
-import { Auswahl, Knopf, styles } from '../ui';
+import { Auswahl, Knopf, farben, styles } from '../ui';
 
 // Fünfstufige Skala: angezeigt werden nur Worte, gespeichert wird die Zahl 1–5.
 const NIEDRIG_HOCH = ['sehr niedrig', 'niedrig', 'mittel', 'hoch', 'sehr hoch'];
 const SCHLECHT_GUT = ['sehr schlecht', 'schlecht', 'mittel', 'gut', 'sehr gut'];
 
-type SkalenFrage = 'energie' | 'stimmung' | 'motivation' | 'fokus' | 'schlafqualitaet';
+const skala = (worte: string[]) => worte.map((text, i) => ({ wert: i + 1, text }));
 
-const FRAGEN: { feld: SkalenFrage; frage: string; worte: string[] }[] = [
-  { feld: 'energie', frage: 'Wie ist deine Energie?', worte: NIEDRIG_HOCH },
-  { feld: 'stimmung', frage: 'Wie ist deine Stimmung?', worte: SCHLECHT_GUT },
-  { feld: 'motivation', frage: 'Wie ist deine Motivation?', worte: NIEDRIG_HOCH },
-  { feld: 'fokus', frage: 'Wie ist dein Fokus?', worte: NIEDRIG_HOCH },
-  { feld: 'schlafqualitaet', frage: 'Wie gut hast du geschlafen?', worte: SCHLECHT_GUT },
+type Antworten = Omit<CheckInDaten, 'datum' | 'gespeichertUm'>;
+type Feld = keyof Antworten;
+
+type Schritt = {
+  feld: Feld;
+  frage: string;
+  optionen?: { wert: Antworten[Feld]; text: string }[];
+};
+
+const TAGESART: Schritt = {
+  feld: 'tagesart',
+  frage: 'Was für ein Tag ist heute?',
+  optionen: [
+    { wert: 'pausentag', text: 'Pausentag' },
+    { wert: 'trainingstag', text: 'Trainingstag' },
+    { wert: 'spieltag', text: 'Spieltag' },
+  ],
+};
+
+const TAEGLICH: Schritt[] = [
+  { feld: 'energie', frage: 'Wie ist deine Energie?', optionen: skala(NIEDRIG_HOCH) },
+  { feld: 'stimmung', frage: 'Wie ist deine Stimmung?', optionen: skala(SCHLECHT_GUT) },
+  { feld: 'motivation', frage: 'Wie ist deine Motivation?', optionen: skala(NIEDRIG_HOCH) },
+  { feld: 'fokus', frage: 'Wie ist dein Fokus?', optionen: skala(NIEDRIG_HOCH) },
+  { feld: 'schlafStunden', frage: 'Wie lange hast du geschlafen?' },
+  { feld: 'schlafqualitaet', frage: 'Wie gut hast du geschlafen?', optionen: skala(SCHLECHT_GUT) },
 ];
 
-const skala = (worte: string[]) => worte.map((text, i) => ({ wert: i + 1, text }));
+const SPIELTAG: Schritt[] = [
+  { feld: 'nervositaet', frage: 'Wie nervös bist du?', optionen: skala(NIEDRIG_HOCH) },
+  {
+    feld: 'nervositaetRichtung',
+    frage: 'Ist deine Nervosität eher …',
+    optionen: [
+      { wert: 'hilfreich', text: 'eher hilfreich' },
+      { wert: 'hinderlich', text: 'eher hinderlich' },
+    ],
+  },
+];
 
 type Props = {
   onFertig: (checkIn: CheckInDaten) => void;
@@ -25,34 +55,51 @@ type Props = {
 };
 
 export default function CheckIn({ onFertig, onSpaeter }: Props) {
-  const [tagesart, setTagesart] = useState<Tagesart>();
-  const [werte, setWerte] = useState<Partial<Record<SkalenFrage, number>>>({});
+  const [antworten, setAntworten] = useState<Antworten>({});
   const [schlafStunden, setSchlafStunden] = useState(8);
-  const [nervositaet, setNervositaet] = useState<number>();
-  const [richtung, setRichtung] = useState<'hilfreich' | 'hinderlich'>();
+  const [nummer, setNummer] = useState(0);
 
-  const spieltag = tagesart === 'spieltag';
-  const fertig =
-    tagesart !== undefined &&
-    FRAGEN.every((f) => werte[f.feld] !== undefined) &&
-    (!spieltag || (nervositaet !== undefined && richtung !== undefined));
+  // Die Fragen zur Nervosität gibt es nur am Spieltag.
+  const schritte = [TAGESART, ...TAEGLICH, ...(antworten.tagesart === 'spieltag' ? SPIELTAG : [])];
+  const schritt = schritte[nummer] as Schritt | undefined;
 
-  function schlafAendern(um: number) {
-    setSchlafStunden((s) => Math.min(16, Math.max(0, s + um)));
+  function weiter() {
+    setNummer((n) => n + 1);
+  }
+
+  function zurueck() {
+    setNummer((n) => Math.max(0, n - 1));
+  }
+
+  function waehlen(feld: Feld, wert: Antworten[Feld]) {
+    setAntworten((a) => {
+      const neu = { ...a, [feld]: wert };
+      // Wer vom Spieltag auf einen anderen Tag wechselt, hat keine Nervositätsangaben.
+      if (feld === 'tagesart' && wert !== 'spieltag') {
+        delete neu.nervositaet;
+        delete neu.nervositaetRichtung;
+      }
+      return neu;
+    });
+    // Kurz warten, damit man die Auswahl noch sieht. Doppeltes Tippen springt nicht zwei Fragen weiter.
+    const naechste = nummer + 1;
+    setTimeout(() => setNummer(naechste), 250);
+  }
+
+  function ueberspringen() {
+    if (!schritt) return;
+    setAntworten((a) => {
+      const neu = { ...a };
+      delete neu[schritt.feld];
+      return neu;
+    });
+    weiter();
   }
 
   async function speichern() {
-    if (!fertig || !tagesart) return;
     const checkIn: CheckInDaten = {
+      ...antworten,
       datum: heute(),
-      tagesart,
-      energie: werte.energie!,
-      stimmung: werte.stimmung!,
-      motivation: werte.motivation!,
-      fokus: werte.fokus!,
-      schlafStunden,
-      schlafqualitaet: werte.schlafqualitaet!,
-      ...(spieltag ? { nervositaet, nervositaetRichtung: richtung } : {}),
       gespeichertUm: new Date().toISOString(),
     };
     await checkInSpeichern(checkIn);
@@ -61,74 +108,81 @@ export default function CheckIn({ onFertig, onSpaeter }: Props) {
 
   return (
     <ScrollView contentContainerStyle={styles.seite}>
-      <Text style={styles.titel}>Check-in</Text>
-      <Text style={styles.text}>Wie geht es dir heute? Tippe jeweils an, was am besten passt.</Text>
-
-      <Text style={styles.zwischentitel}>Was für ein Tag ist heute?</Text>
-      <Auswahl
-        optionen={[
-          { wert: 'pausentag' as Tagesart, text: 'Pausentag' },
-          { wert: 'trainingstag' as Tagesart, text: 'Trainingstag' },
-          { wert: 'spieltag' as Tagesart, text: 'Spieltag' },
-        ]}
-        gewaehlt={tagesart}
-        onWahl={setTagesart}
-      />
-
-      {FRAGEN.slice(0, 4).map((f) => (
-        <View key={f.feld}>
-          <Text style={styles.zwischentitel}>{f.frage}</Text>
-          <Auswahl
-            optionen={skala(f.worte)}
-            gewaehlt={werte[f.feld]}
-            onWahl={(wert) => setWerte((w) => ({ ...w, [f.feld]: wert }))}
-          />
-        </View>
-      ))}
-
-      <Text style={styles.zwischentitel}>Wie lange hast du geschlafen?</Text>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
-        <View style={{ width: 60 }}>
-          <Knopf titel="–" art="neben" onPress={() => schlafAendern(-0.5)} />
-        </View>
-        <Text style={[styles.titel, { marginBottom: 0, marginTop: 16, minWidth: 110, textAlign: 'center' }]}>
-          {schlafStunden.toLocaleString('de-DE')} Std.
-        </Text>
-        <View style={{ width: 60 }}>
-          <Knopf titel="+" art="neben" onPress={() => schlafAendern(0.5)} />
-        </View>
+      <View style={styles.kopfzeile}>
+        {nummer > 0 ? (
+          <Pressable onPress={zurueck} hitSlop={12}>
+            <Text style={styles.textKnopf}>‹ Zurück</Text>
+          </Pressable>
+        ) : (
+          <View />
+        )}
+        <Pressable onPress={onSpaeter} hitSlop={12}>
+          <Text style={styles.textKnopf}>Später</Text>
+        </Pressable>
       </View>
 
-      {FRAGEN.slice(4).map((f) => (
-        <View key={f.feld}>
-          <Text style={styles.zwischentitel}>{f.frage}</Text>
-          <Auswahl
-            optionen={skala(f.worte)}
-            gewaehlt={werte[f.feld]}
-            onWahl={(wert) => setWerte((w) => ({ ...w, [f.feld]: wert }))}
-          />
-        </View>
-      ))}
+      <View style={styles.fortschritt}>
+        <View
+          style={[
+            styles.fortschrittBalken,
+            { width: `${(Math.min(nummer, schritte.length) / schritte.length) * 100}%` },
+          ]}
+        />
+      </View>
 
-      {spieltag && (
+      {schritt ? (
         <View>
-          <Text style={styles.zwischentitel}>Wie nervös bist du?</Text>
-          <Auswahl optionen={skala(NIEDRIG_HOCH)} gewaehlt={nervositaet} onWahl={setNervositaet} />
+          <Text style={styles.kleintext}>
+            Frage {nummer + 1} von {schritte.length}
+          </Text>
+          <Text style={[styles.titel, { marginBottom: 24 }]}>{schritt.frage}</Text>
 
-          <Text style={styles.zwischentitel}>Ist deine Nervosität eher …</Text>
-          <Auswahl
-            optionen={[
-              { wert: 'hilfreich' as const, text: 'eher hilfreich' },
-              { wert: 'hinderlich' as const, text: 'eher hinderlich' },
-            ]}
-            gewaehlt={richtung}
-            onWahl={setRichtung}
-          />
+          {schritt.optionen ? (
+            <Auswahl
+              optionen={schritt.optionen}
+              gewaehlt={antworten[schritt.feld]}
+              onWahl={(wert) => waehlen(schritt.feld, wert)}
+            />
+          ) : (
+            <View>
+              <View style={styles.schlafReihe}>
+                <Pressable
+                  style={styles.rundKnopf}
+                  onPress={() => setSchlafStunden((s) => Math.max(0, s - 0.5))}
+                >
+                  <Text style={styles.rundKnopfText}>–</Text>
+                </Pressable>
+                <Text style={styles.schlafZahl}>{schlafStunden.toLocaleString('de-DE')} Std.</Text>
+                <Pressable
+                  style={styles.rundKnopf}
+                  onPress={() => setSchlafStunden((s) => Math.min(16, s + 0.5))}
+                >
+                  <Text style={styles.rundKnopfText}>+</Text>
+                </Pressable>
+              </View>
+              <Knopf
+                titel="Weiter"
+                onPress={() => {
+                  setAntworten((a) => ({ ...a, schlafStunden }));
+                  weiter();
+                }}
+              />
+            </View>
+          )}
+
+          <Pressable onPress={ueberspringen} hitSlop={12} style={{ marginTop: 24, alignSelf: 'center' }}>
+            <Text style={styles.textKnopf}>Überspringen</Text>
+          </Pressable>
+        </View>
+      ) : (
+        <View>
+          <Text style={styles.titel}>Geschafft!</Text>
+          <Text style={styles.text}>
+            Danke, dass du dir die Zeit nimmst. Möchtest du deinen Check-in für heute speichern?
+          </Text>
+          <Knopf titel="Check-in speichern" onPress={speichern} />
         </View>
       )}
-
-      <Knopf titel="Check-in speichern" onPress={speichern} deaktiviert={!fertig} />
-      <Knopf titel="Später machen" art="neben" onPress={onSpaeter} />
     </ScrollView>
   );
 }

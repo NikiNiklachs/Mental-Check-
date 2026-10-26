@@ -23,15 +23,16 @@ export type Einwilligung = {
 export type Tagesart = 'pausentag' | 'spieltag' | 'trainingstag';
 
 // Skalenwerte werden als Zahl 1–5 gespeichert (1 = sehr niedrig, 5 = sehr hoch).
+// Übersprungene Fragen fehlen im gespeicherten Check-in.
 export type CheckIn = {
   datum: string;
-  tagesart: Tagesart;
-  energie: number;
-  stimmung: number;
-  motivation: number;
-  fokus: number;
-  schlafStunden: number;
-  schlafqualitaet: number;
+  tagesart?: Tagesart;
+  energie?: number;
+  stimmung?: number;
+  motivation?: number;
+  fokus?: number;
+  schlafStunden?: number;
+  schlafqualitaet?: number;
   nervositaet?: number;
   nervositaetRichtung?: 'hilfreich' | 'hinderlich';
   gespeichertUm: string;

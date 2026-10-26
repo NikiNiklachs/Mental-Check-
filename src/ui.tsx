@@ -1,13 +1,15 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+// Warme Farben: Creme-Hintergrund, Terrakotta als Akzent.
 export const farben = {
-  hintergrund: '#fff',
-  text: '#222',
-  grau: '#555',
-  akzent: '#1f6feb',
-  hell: '#eef3fb',
-  rahmen: '#ccd',
-  warnung: '#b42318',
+  hintergrund: '#FBF5EE',
+  karte: '#FFFFFF',
+  text: '#3D2C29',
+  grau: '#7A6660',
+  akzent: '#D9774B',
+  hell: '#F6E6D8',
+  rahmen: '#EBDCCF',
+  warnung: '#B5473A',
 };
 
 type KnopfProps = {
@@ -40,7 +42,7 @@ type AuswahlProps<T> = {
   onWahl: (wert: T) => void;
 };
 
-// Eine Reihe von Antwortfeldern, von denen genau eines gewählt werden kann.
+// Antwortfelder untereinander, von denen genau eines gewählt werden kann.
 export function Auswahl<T>({ optionen, gewaehlt, onWahl }: AuswahlProps<T>) {
   return (
     <View style={styles.auswahl}>
@@ -107,9 +109,9 @@ export const styles = StyleSheet.create({
   },
   knopf: {
     backgroundColor: farben.akzent,
-    paddingVertical: 14,
+    paddingVertical: 15,
     paddingHorizontal: 20,
-    borderRadius: 10,
+    borderRadius: 28,
     alignItems: 'center',
     marginTop: 16,
   },
@@ -133,23 +135,22 @@ export const styles = StyleSheet.create({
     color: farben.akzent,
   },
   auswahl: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
+    gap: 10,
   },
   option: {
-    borderWidth: 1,
+    backgroundColor: farben.karte,
+    borderWidth: 1.5,
     borderColor: farben.rahmen,
-    borderRadius: 20,
-    paddingVertical: 8,
-    paddingHorizontal: 14,
+    borderRadius: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
   },
   optionAktiv: {
     backgroundColor: farben.akzent,
     borderColor: farben.akzent,
   },
   optionText: {
-    fontSize: 15,
+    fontSize: 17,
     color: farben.text,
   },
   optionTextAktiv: {
@@ -167,7 +168,7 @@ export const styles = StyleSheet.create({
     height: 26,
     borderWidth: 2,
     borderColor: farben.akzent,
-    borderRadius: 6,
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -184,9 +185,63 @@ export const styles = StyleSheet.create({
     lineHeight: 23,
     color: farben.text,
   },
+  kopfzeile: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
+  textKnopf: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: farben.akzent,
+  },
+  fortschritt: {
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: farben.hell,
+    marginBottom: 32,
+    overflow: 'hidden',
+  },
+  fortschrittBalken: {
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: farben.akzent,
+  },
+  kleintext: {
+    fontSize: 14,
+    color: farben.grau,
+    marginBottom: 8,
+  },
+  schlafReihe: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 24,
+    marginVertical: 16,
+  },
+  rundKnopf: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: farben.hell,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rundKnopfText: {
+    fontSize: 28,
+    color: farben.akzent,
+    fontWeight: '600',
+  },
+  schlafZahl: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: farben.text,
+    minWidth: 130,
+    textAlign: 'center',
+  },
   hinweis: {
     backgroundColor: farben.hell,
-    borderRadius: 10,
+    borderRadius: 16,
     padding: 14,
     marginBottom: 16,
   },
