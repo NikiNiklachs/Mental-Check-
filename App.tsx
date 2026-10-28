@@ -22,6 +22,8 @@ export default function App() {
   const [einwilligung, setEinwilligung] = useState<Einwilligung | null>(null);
   const [checkInHeute, setCheckInHeute] = useState<CheckInDaten | null>(null);
   const [testModus, setTestModus] = useState(false);
+  // Datum, an dem der Check-in übersprungen wurde. Wird nicht gespeichert.
+  const [uebersprungenAm, setUebersprungenAm] = useState<string | null>(null);
   // Der Check-in öffnet sich nur beim ersten Öffnen des Tages von selbst.
   const checkInGezeigtAm = useRef<string | null>(null);
 
@@ -97,8 +99,10 @@ export default function App() {
     inhalt = (
       <Start
         checkInHeute={checkInHeute}
+        uebersprungen={uebersprungenAm === heute()}
         testModus={testModus}
         onCheckIn={() => setSeite('checkin')}
+        onUeberspringen={() => setUebersprungenAm(heute())}
         onEinstellungen={() => setSeite('einstellungen')}
       />
     );

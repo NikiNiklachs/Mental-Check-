@@ -1,15 +1,15 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-// Warme Farben: Creme-Hintergrund, Terrakotta als Akzent.
+// Farbschema „Salbei“: helles Salbeigrün mit dunklem Grün als Akzent.
 export const farben = {
-  hintergrund: '#FBF5EE',
+  hintergrund: '#F2F5F0',
   karte: '#FFFFFF',
-  text: '#3D2C29',
-  grau: '#7A6660',
-  akzent: '#D9774B',
-  hell: '#F6E6D8',
-  rahmen: '#EBDCCF',
-  warnung: '#B5473A',
+  text: '#21302A',
+  grau: '#5F6E66',
+  akzent: '#2F6B57',
+  hell: '#DDE9E1',
+  rahmen: '#D3DED6',
+  warnung: '#B4443A',
 };
 
 type KnopfProps = {

@@ -48,7 +48,9 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 - Schlafdauer per Minus/Plus in halben Stunden (0–16 Std., Start bei 8).
 - Check-in öffnet sich beim ersten Öffnen des Tages von selbst und lässt sich mit „Später“ verschieben.
 - Check-in zeigt eine Frage pro Seite, Antworten untereinander. Nach dem Ankreuzen geht es automatisch weiter. Jede Frage hat „Zurück“ und „Überspringen“; übersprungene Fragen fehlen im gespeicherten Check-in. Am Ende „Check-in speichern“.
-- Design: warm (Creme-Hintergrund, Terrakotta-Akzent), Farben zentral in `src/ui.tsx`.
+- Design: Farbschema „Salbei“ (helles Salbeigrün, dunkelgrüner Akzent), Farben zentral in `src/ui.tsx`. Creme/Terrakotta hat Niklas abgelehnt.
+- Startseite: Gruß, Karte „Dein Check-in für heute“ mit „Check-in starten“ und „Heute überspringen“, Einstellungen oben rechts. „Später“ im Check-in führt dorthin. Überspringen wird nicht gespeichert.
+- Snack-Test auf dem iPad: Code als JavaScript über eine Seite mit Kopier-Knopf (siehe README).
 - Snack-Version: alle Dateien zu einer `App.tsx` zusammengefügt (ohne `expo-status-bar`).
 
 ## Tagesablauf
