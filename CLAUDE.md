@@ -35,6 +35,7 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 - Spotify später nur über Community-Pakete möglich, dafür ist mehr Aufwand einzuplanen.
 - Projekt liegt direkt im Hauptordner des Repos (Vorlage `blank-typescript`, Expo SDK 58). Nur iOS und Android, keine Web-Version.
 - Neue Pakete immer mit `npx expo install <paket>` hinzufügen. Testanleitung steht in `README.md`.
+- Testen ohne Computer (2026-10-28): GitHub Action veröffentlicht jeden Push per EAS Update, Niklas öffnet den Stand in Expo Go (eigenes Expo-Konto, Secret `EXPO_TOKEN`). Dafür ist `expo-updates` eingebaut. Datenschutz: In einer echten App-Version fragt `expo-updates` beim Start bei Expo-Servern nach Updates. Vor dem ersten echten Build entscheiden, ob das bleibt oder abgeschaltet wird.
 
 ## Umsetzung Datenschutz-Start und Check-in (Stand 26.10.2026)
 
