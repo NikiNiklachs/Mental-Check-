@@ -54,6 +54,15 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 - Snack-Test auf dem iPad: Code als JavaScript über eine Seite mit Kopier-Knopf (siehe README).
 - Snack-Version: alle Dateien zu einer `App.tsx` zusammengefügt (ohne `expo-status-bar`).
 
+## Umsetzung Übungsvorschlag und Check-out (Stand 28.10.2026, Vorschlag, wartet auf Niklas' Bestätigung)
+
+- Übungen als Platzhalter ohne Ton in `src/uebungen.ts`: Box-Breathing, aktivierende Atmung, Fokus-Cue, Self-Talk, kurze Reflexion, Regeneration, Visualisierung.
+- Vorschlag nach dem Check-in: „niedrig“ heißt Wert 1 oder 2. Reihenfolge bei mehreren: hinderliche Nervosität → Box-Breathing, Energie → aktivierende Atmung, Fokus → Fokus-Cue, Motivation → Self-Talk, Stimmung → Reflexion, Schlaf unter 6 Std. oder schlecht → Regeneration. Sonst nur am Spieltag Visualisierung, an anderen Tagen kein Vorschlag.
+- Annehmen/Ablehnen wird im Check-in des Tages gespeichert (`vorschlag`, `vorschlagAntwort`). Eine angenommene Übung bleibt auf der Startseite erreichbar.
+- Check-out: ab 19:00 Uhr (in den Einstellungen 12–23 Uhr einstellbar, Eintrag `einstellungen`), öffnet sich einmal am Tag von selbst, sonst Karte auf der Startseite. Gespeichert als `checkout_JJJJ-MM-TT`, beim Widerruf mitgelöscht.
+- Check-out-Fragen, eine pro Seite mit Zurück/Überspringen/Später: Zufriedenheit mit dem Tag (5 Stufen „sehr unzufrieden … sehr zufrieden“), dann „Was war gut?“, „Was war nicht gut?“, „Was willst du besser machen?“ mit Mehrfachauswahl (Fokus, Einsatz, Umgang mit Druck, Technik, Stimmung, Erholung) und freiwilliger Notiz. Notizen bleiben nur lokal.
+- Erinnerung per Benachrichtigung an den Check-out kommt in einem eigenen Schritt.
+
 ## Tagesablauf
 
 - Neuer Tag beginnt um 00:00 Uhr.

@@ -62,6 +62,37 @@ export function Auswahl<T>({ optionen, gewaehlt, onWahl }: AuswahlProps<T>) {
   );
 }
 
+type MehrfachProps = {
+  optionen: { wert: string; text: string }[];
+  gewaehlt: string[];
+  onWechsel: (gewaehlt: string[]) => void;
+};
+
+// Antwortfelder untereinander, von denen mehrere gewählt werden können.
+export function MehrfachAuswahl({ optionen, gewaehlt, onWechsel }: MehrfachProps) {
+  return (
+    <View style={styles.auswahl}>
+      {optionen.map((o) => {
+        const aktiv = gewaehlt.includes(o.wert);
+        return (
+          <Pressable
+            key={o.wert}
+            onPress={() =>
+              onWechsel(aktiv ? gewaehlt.filter((w) => w !== o.wert) : [...gewaehlt, o.wert])
+            }
+            style={[styles.option, aktiv && styles.optionAktiv]}
+          >
+            <Text style={[styles.optionText, aktiv && styles.optionTextAktiv]}>
+              {aktiv ? '✓ ' : ''}
+              {o.text}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
 type HakenProps = {
   text: string;
   an: boolean;
@@ -238,6 +269,18 @@ export const styles = StyleSheet.create({
     color: farben.text,
     minWidth: 130,
     textAlign: 'center',
+  },
+  notiz: {
+    backgroundColor: farben.karte,
+    borderWidth: 1.5,
+    borderColor: farben.rahmen,
+    borderRadius: 16,
+    padding: 14,
+    minHeight: 90,
+    fontSize: 16,
+    color: farben.text,
+    textAlignVertical: 'top',
+    marginTop: 16,
   },
   hinweis: {
     backgroundColor: farben.hell,

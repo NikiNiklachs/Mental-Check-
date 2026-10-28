@@ -9,7 +9,9 @@ const OPTIONEN: SecureStore.SecureStoreOptions = {
 
 const SCHLUESSEL_EINWILLIGUNG = 'einwilligung';
 const SCHLUESSEL_ERSTER_TAG = 'erster_tag';
+const SCHLUESSEL_EINSTELLUNGEN = 'einstellungen';
 const checkInSchluessel = (datum: string) => `checkin_${datum}`;
+const checkOutSchluessel = (datum: string) => `checkout_${datum}`;
 
 export type Altersgruppe = 'ab16' | 'unter16';
 
@@ -35,8 +37,31 @@ export type CheckIn = {
   schlafqualitaet?: number;
   nervositaet?: number;
   nervositaetRichtung?: 'hilfreich' | 'hinderlich';
+  // Nach dem Check-in vorgeschlagene Übung und ob sie angenommen wurde.
+  vorschlag?: string;
+  vorschlagAntwort?: 'angenommen' | 'abgelehnt';
   gespeichertUm: string;
 };
+
+// Check-out am Abend. Übersprungene Fragen fehlen auch hier.
+export type CheckOut = {
+  datum: string;
+  zufriedenheit?: number;
+  gut?: string[];
+  gutNotiz?: string;
+  nichtGut?: string[];
+  nichtGutNotiz?: string;
+  besser?: string[];
+  besserNotiz?: string;
+  gespeichertUm: string;
+};
+
+export type Einstellungen = {
+  // Ab dieser Stunde (0–23) erscheint der Check-out.
+  checkOutStunde: number;
+};
+
+const STANDARD_EINSTELLUNGEN: Einstellungen = { checkOutStunde: 19 };
 
 // Im Browser (z. B. Web-Vorschau in Snack) gibt es keinen sicheren Speicher.
 // Dann merkt sich die App die Daten nur, solange sie geöffnet ist.
@@ -103,7 +128,25 @@ export async function checkInSpeichern(checkIn: CheckIn): Promise<void> {
   await schreiben(checkInSchluessel(checkIn.datum), JSON.stringify(checkIn));
 }
 
-// Widerruf: löscht die Einwilligung und jeden Check-in seit dem ersten Tag.
+export async function checkOutLaden(datum: string): Promise<CheckOut | null> {
+  const text = await lesen(checkOutSchluessel(datum));
+  return text ? (JSON.parse(text) as CheckOut) : null;
+}
+
+export async function checkOutSpeichern(checkOut: CheckOut): Promise<void> {
+  await schreiben(checkOutSchluessel(checkOut.datum), JSON.stringify(checkOut));
+}
+
+export async function einstellungenLaden(): Promise<Einstellungen> {
+  const text = await lesen(SCHLUESSEL_EINSTELLUNGEN);
+  return text ? { ...STANDARD_EINSTELLUNGEN, ...JSON.parse(text) } : STANDARD_EINSTELLUNGEN;
+}
+
+export async function einstellungenSpeichern(einstellungen: Einstellungen): Promise<void> {
+  await schreiben(SCHLUESSEL_EINSTELLUNGEN, JSON.stringify(einstellungen));
+}
+
+// Widerruf: löscht die Einwilligung, die Einstellungen und jeden Check-in und Check-out seit dem ersten Tag.
 export async function allesLoeschen(): Promise<void> {
   const ersterTag = await lesen(SCHLUESSEL_ERSTER_TAG);
   if (ersterTag) {
@@ -113,9 +156,11 @@ export async function allesLoeschen(): Promise<void> {
     ende.setDate(ende.getDate() + 1);
     while (tag <= ende) {
       await loeschen(checkInSchluessel(datumAlsText(tag)));
+      await loeschen(checkOutSchluessel(datumAlsText(tag)));
       tag.setDate(tag.getDate() + 1);
     }
   }
+  await loeschen(SCHLUESSEL_EINSTELLUNGEN);
   await loeschen(SCHLUESSEL_ERSTER_TAG);
   await loeschen(SCHLUESSEL_EINWILLIGUNG);
 }
