@@ -4,7 +4,7 @@
 
 Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistungsfähiger zu werden. Entwickelt von einem Sportpsychologen (Praxis im Leistungssport, Master Sportpsychologie).
 
-**Status:** Designphase. Es gibt ein lauffähiges Grundgerüst (Expo-Projekt mit Startbildschirm), noch ohne Funktionen. Zielplattform: iOS und Android (beschlossen). Technologie-Stack: React Native mit Expo (beschlossen).
+**Status:** Designphase. Es gibt ein lauffähiges Grundgerüst mit Datenschutz-Start und Check-in. Zielplattform: iOS und Android (beschlossen). Technologie-Stack: React Native mit Expo (beschlossen).
 
 ## Arbeitsregeln für Claude Code
 
@@ -36,6 +36,23 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 - Projekt liegt direkt im Hauptordner des Repos (Vorlage `blank-typescript`, Expo SDK 58). Nur iOS und Android, keine Web-Version.
 - Neue Pakete immer mit `npx expo install <paket>` hinzufügen. Testanleitung steht in `README.md`.
 - Testen ohne Computer (2026-10-28): GitHub Action veröffentlicht jeden Push per EAS Update, Niklas öffnet den Stand in Expo Go (eigenes Expo-Konto, Secret `EXPO_TOKEN`). Dafür ist `expo-updates` eingebaut. Datenschutz: In einer echten App-Version fragt `expo-updates` beim Start bei Expo-Servern nach Updates. Vor dem ersten echten Build entscheiden, ob das bleibt oder abgeschaltet wird.
+
+## Umsetzung Datenschutz-Start und Check-in (Stand 26.10.2026)
+
+- Speicher: `expo-secure-store` (iOS Keychain / Android Keystore), Option „nur dieses Gerät“, also kein Backup und keine Übertragung. Ein Eintrag pro Check-in-Tag (`checkin_JJJJ-MM-TT`), dazu `einwilligung` und `erster_tag`. Code in `src/speicher.ts`.
+- Widerruf löscht alle Tage vom ersten Tag bis heute, danach Einwilligung und ersten Tag.
+- Wo kein sicherer Speicher da ist (z. B. Web-Vorschau in Snack), läuft die App im Testmodus und speichert nur im Arbeitsspeicher.
+- Altersabfrage nur als Gruppe („16 oder älter“ / „unter 16“), kein Geburtsdatum (datensparsam). Elternzustimmung per Ankreuzen, ohne Nachweis (rechtlich zu prüfen).
+- Navigation vorerst ohne Paket, einfache Seitenwechsel in `App.tsx`. Die Leiste unten kommt später.
+- Tagesart wird im Check-in immer abgefragt, bis der Kalender da ist.
+- Skalenworte: Energie, Motivation, Fokus, Nervosität „sehr niedrig … sehr hoch“; Stimmung und Schlafqualität „sehr schlecht … sehr gut“.
+- Schlafdauer per Minus/Plus in halben Stunden (0–16 Std., Start bei 8).
+- Check-in öffnet sich beim ersten Öffnen des Tages von selbst und lässt sich mit „Später“ verschieben.
+- Check-in zeigt eine Frage pro Seite, Antworten untereinander. Nach dem Ankreuzen geht es automatisch weiter. Jede Frage hat „Zurück“ und „Überspringen“; übersprungene Fragen fehlen im gespeicherten Check-in. Am Ende „Check-in speichern“.
+- Design: Farbschema „Salbei“ (helles Salbeigrün, dunkelgrüner Akzent), Farben zentral in `src/ui.tsx`. Creme/Terrakotta hat Niklas abgelehnt.
+- Startseite: Gruß, Karte „Dein Check-in für heute“ mit „Check-in starten“ und „Heute überspringen“, Einstellungen oben rechts. „Später“ im Check-in führt dorthin. Überspringen wird nicht gespeichert.
+- Snack-Test auf dem iPad: Code als JavaScript über eine Seite mit Kopier-Knopf (siehe README).
+- Snack-Version: alle Dateien zu einer `App.tsx` zusammengefügt (ohne `expo-status-bar`).
 
 ## Tagesablauf
 

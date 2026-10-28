@@ -53,6 +53,15 @@ Grenzen:
 - Expo Go kann nur Pakete, die in Expo Go enthalten sind (z. B. `expo-secure-store`). Spätere Funktionen wie Spotify gehen damit nicht.
 - Expo Go aus dem App Store unterstützt nur die neueste Expo-SDK-Version. Nach einem SDK-Wechsel muss das Projekt nachziehen.
 
+## Notlösung: Expo Snack
+
+1. Die Snack-Version der App ist eine einzige JavaScript-Datei mit allen Bildschirmen. Claude stellt sie auf einer Seite mit „Code kopieren“-Knopf bereit.
+2. Auf https://snack.expo.dev die App-Datei öffnen (`App.js` oder `App.tsx`, beides geht), in den Code tippen, gedrückt halten, „Alles auswählen“ und dann „Einfügen“.
+3. Snack meldet, dass `expo-secure-store` fehlt: auf „Add dependency“ tippen.
+4. Rechts „iOS“ oder „Android“ wählen oder den QR-Code mit Expo Go öffnen.
+
+In der Web-Vorschau gibt es keinen sicheren Speicher. Die App zeigt dann „Testmodus“ und vergisst die Eingaben beim Neuladen. Mit Expo Go auf dem Gerät wird verschlüsselt gespeichert.
+
 ## Datenschutz-Hinweis zur Entwicklung
 
 - Bei EAS Update wird nur der Programmcode zu Expo hochgeladen, keine Daten von Athlet:innen.
