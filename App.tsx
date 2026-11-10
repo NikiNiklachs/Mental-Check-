@@ -5,8 +5,11 @@ import CheckIn from './src/screens/CheckIn';
 import CheckOut from './src/screens/CheckOut';
 import Datenschutz, { DATENSCHUTZ_VERSION } from './src/screens/Datenschutz';
 import Einstellungen from './src/screens/Einstellungen';
+import KommtBald from './src/screens/KommtBald';
 import Start from './src/screens/Start';
 import Uebung from './src/screens/Uebung';
+import Uebungen from './src/screens/Uebungen';
+import Leiste, { Bereich } from './src/Leiste';
 import {
   CheckIn as CheckInDaten,
   CheckOut as CheckOutDaten,
@@ -27,7 +30,7 @@ import { farben } from './src/ui';
 type Seite =
   | 'laden'
   | 'datenschutz'
-  | 'start'
+  | Bereich
   | 'checkin'
   | 'uebung'
   | 'checkout'
@@ -39,8 +42,9 @@ export default function App() {
   const [checkInHeute, setCheckInHeute] = useState<CheckInDaten | null>(null);
   const [checkOutHeute, setCheckOutHeute] = useState<CheckOutDaten | null>(null);
   const [einstellungen, setEinstellungen] = useState<EinstellungenDaten | null>(null);
-  // Geöffnete Übung.
+  // Geöffnete Übung und der Bereich, aus dem sie geöffnet wurde.
   const [uebung, setUebung] = useState<UebungDaten | undefined>();
+  const [uebungVon, setUebungVon] = useState<Bereich>('start');
   const [testModus, setTestModus] = useState(false);
   // Datum, an dem der Check-in übersprungen wurde. Wird nicht gespeichert.
   const [uebersprungenAm, setUebersprungenAm] = useState<string | null>(null);
@@ -116,7 +120,31 @@ export default function App() {
       />
     );
   } else if (seite === 'uebung' && uebung) {
-    inhalt = <Uebung uebung={uebung} onFertig={() => setSeite('start')} />;
+    inhalt = <Uebung uebung={uebung} onFertig={() => setSeite(uebungVon)} />;
+  } else if (seite === 'uebungen') {
+    inhalt = (
+      <Uebungen
+        onUebung={(id) => {
+          setUebung(uebungFinden(id));
+          setUebungVon('uebungen');
+          setSeite('uebung');
+        }}
+      />
+    );
+  } else if (seite === 'kalender') {
+    inhalt = (
+      <KommtBald
+        titel="Kalender"
+        text="Hier trägst du bald deine Trainings und Wettkämpfe ein oder lädst den Plan deines Vereins."
+      />
+    );
+  } else if (seite === 'verlauf') {
+    inhalt = (
+      <KommtBald
+        titel="Verlauf"
+        text="Hier siehst du bald, wie sich deine Check-ins über die Zeit entwickeln."
+      />
+    );
   } else if (seite === 'checkout') {
     inhalt = (
       <CheckOut
@@ -160,6 +188,7 @@ export default function App() {
         onCheckOut={() => setSeite('checkout')}
         onUebung={(id) => {
           setUebung(uebungFinden(id));
+          setUebungVon('start');
           setSeite('uebung');
         }}
         onVorschlagAntwort={async (id, angenommen) => {
@@ -174,6 +203,7 @@ export default function App() {
           setCheckInHeute(c);
           if (angenommen) {
             setUebung(uebungFinden(id));
+            setUebungVon('start');
             setSeite('uebung');
           }
         }}
@@ -185,7 +215,10 @@ export default function App() {
 
   return (
     <View style={{ flex: 1, backgroundColor: farben.hintergrund }}>
-      {inhalt}
+      <View style={{ flex: 1 }}>{inhalt}</View>
+      {(seite === 'start' || seite === 'uebungen' || seite === 'kalender' || seite === 'verlauf') && (
+        <Leiste aktiv={seite} onWahl={setSeite} />
+      )}
       <StatusBar style="auto" />
     </View>
   );

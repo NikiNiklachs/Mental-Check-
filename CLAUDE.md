@@ -43,7 +43,7 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 - Widerruf löscht alle Tage vom ersten Tag bis heute, danach Einwilligung und ersten Tag.
 - Wo kein sicherer Speicher da ist (z. B. Web-Vorschau in Snack), läuft die App im Testmodus und speichert nur im Arbeitsspeicher.
 - Altersabfrage nur als Gruppe („16 oder älter“ / „unter 16“), kein Geburtsdatum (datensparsam). Elternzustimmung per Ankreuzen, ohne Nachweis (rechtlich zu prüfen).
-- Navigation vorerst ohne Paket, einfache Seitenwechsel in `App.tsx`. Die Leiste unten kommt später.
+- Navigation ohne Paket, einfache Seitenwechsel in `App.tsx`. Leiste unten (`src/Leiste.tsx`, seit 10.11.2026) mit Start, Übungen, Kalender, Verlauf. Kalender hat auf Niklas' Wunsch einen eigenen Punkt; Routinen kommen erst nach Version 1 dazu. Kalender und Verlauf sind vorerst „Kommt bald“-Seiten, Einstellungen bleiben oben rechts auf der Startseite.
 - Tagesart wird im Check-in immer abgefragt, bis der Kalender da ist.
 - Skalenworte: Energie, Motivation, Fokus, Nervosität „sehr niedrig … sehr hoch“; Stimmung und Schlafqualität „sehr schlecht … sehr gut“.
 - Schlafdauer per Minus/Plus in halben Stunden (0–16 Std., Start bei 8).
