@@ -7,7 +7,6 @@ import Datenschutz, { DATENSCHUTZ_VERSION } from './src/screens/Datenschutz';
 import Einstellungen from './src/screens/Einstellungen';
 import Start from './src/screens/Start';
 import Uebung from './src/screens/Uebung';
-import Vorschlag from './src/screens/Vorschlag';
 import {
   CheckIn as CheckInDaten,
   CheckOut as CheckOutDaten,
@@ -22,7 +21,7 @@ import {
   heute,
   istSichererSpeicherDa,
 } from './src/speicher';
-import { Uebung as UebungDaten, uebungFinden, uebungVorschlagen } from './src/uebungen';
+import { Uebung as UebungDaten, uebungFinden } from './src/uebungen';
 import { farben } from './src/ui';
 
 type Seite =
@@ -30,7 +29,6 @@ type Seite =
   | 'datenschutz'
   | 'start'
   | 'checkin'
-  | 'vorschlag'
   | 'uebung'
   | 'checkout'
   | 'einstellungen';
@@ -41,7 +39,7 @@ export default function App() {
   const [checkInHeute, setCheckInHeute] = useState<CheckInDaten | null>(null);
   const [checkOutHeute, setCheckOutHeute] = useState<CheckOutDaten | null>(null);
   const [einstellungen, setEinstellungen] = useState<EinstellungenDaten | null>(null);
-  // Vorgeschlagene bzw. geöffnete Übung.
+  // Geöffnete Übung.
   const [uebung, setUebung] = useState<UebungDaten | undefined>();
   const [testModus, setTestModus] = useState(false);
   // Datum, an dem der Check-in übersprungen wurde. Wird nicht gespeichert.
@@ -112,28 +110,9 @@ export default function App() {
       <CheckIn
         onFertig={(c) => {
           setCheckInHeute(c);
-          const vorschlag = uebungVorschlagen(c);
-          setUebung(vorschlag);
-          setSeite(vorschlag ? 'vorschlag' : 'start');
+          setSeite('start');
         }}
         onSpaeter={() => setSeite('start')}
-      />
-    );
-  } else if (seite === 'vorschlag' && uebung && checkInHeute) {
-    inhalt = (
-      <Vorschlag
-        uebung={uebung}
-        onAntwort={async (angenommen) => {
-          // Die Antwort wird zum Check-in des Tages gespeichert.
-          const c: CheckInDaten = {
-            ...checkInHeute,
-            vorschlag: uebung.id,
-            vorschlagAntwort: angenommen ? 'angenommen' : 'abgelehnt',
-          };
-          await checkInSpeichern(c);
-          setCheckInHeute(c);
-          setSeite(angenommen ? 'uebung' : 'start');
-        }}
       />
     );
   } else if (seite === 'uebung' && uebung) {
@@ -182,6 +161,21 @@ export default function App() {
         onUebung={(id) => {
           setUebung(uebungFinden(id));
           setSeite('uebung');
+        }}
+        onVorschlagAntwort={async (id, angenommen) => {
+          if (!checkInHeute) return;
+          // Die Antwort wird zum Check-in des Tages gespeichert.
+          const c: CheckInDaten = {
+            ...checkInHeute,
+            vorschlag: id,
+            vorschlagAntwort: angenommen ? 'angenommen' : 'abgelehnt',
+          };
+          await checkInSpeichern(c);
+          setCheckInHeute(c);
+          if (angenommen) {
+            setUebung(uebungFinden(id));
+            setSeite('uebung');
+          }
         }}
         onUeberspringen={() => setUebersprungenAm(heute())}
         onEinstellungen={() => setSeite('einstellungen')}

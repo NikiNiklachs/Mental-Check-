@@ -1,6 +1,6 @@
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { CheckIn, CheckOut } from '../speicher';
-import { uebungFinden } from '../uebungen';
+import { uebungFinden, uebungVorschlagen } from '../uebungen';
 import { Knopf, styles } from '../ui';
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
   onCheckIn: () => void;
   onCheckOut: () => void;
   onUebung: (id: string) => void;
+  onVorschlagAntwort: (id: string, angenommen: boolean) => void;
   onUeberspringen: () => void;
   onEinstellungen: () => void;
 };
@@ -25,6 +26,7 @@ export default function Start({
   onCheckIn,
   onCheckOut,
   onUebung,
+  onVorschlagAntwort,
   onUeberspringen,
   onEinstellungen,
 }: Props) {
@@ -32,6 +34,9 @@ export default function Start({
   // Angenommene Übung von heute bleibt auf der Startseite erreichbar.
   const uebung =
     checkInHeute?.vorschlagAntwort === 'angenommen' ? uebungFinden(checkInHeute.vorschlag) : undefined;
+  // Vorschlag nach dem Check-in, bis er angenommen oder abgelehnt wurde.
+  const vorschlag =
+    checkInHeute && !checkInHeute.vorschlagAntwort ? uebungVorschlagen(checkInHeute) : undefined;
   const gruss = stunde < 11 ? 'Guten Morgen!' : stunde < 18 ? 'Hallo!' : 'Guten Abend!';
 
   return (
@@ -47,15 +52,30 @@ export default function Start({
       <Text style={[styles.titel, { marginBottom: 24 }]}>{gruss}</Text>
 
       {checkInHeute ? (
-        <View style={styles.hinweis}>
-          <Text style={[styles.zwischentitel, { marginTop: 0 }]}>Check-in erledigt ✓</Text>
-          <Text style={styles.text}>Danke! Dein Check-in für heute ist gespeichert.</Text>
-          {uebung && (
-            <Pressable onPress={() => onUebung(uebung.id)} hitSlop={12}>
-              <Text style={styles.textKnopf}>Deine Übung: {uebung.titel} ›</Text>
-            </Pressable>
+        <>
+          <View style={styles.hinweis}>
+            <Text style={[styles.zwischentitel, { marginTop: 0 }]}>Check-in erledigt ✓</Text>
+            <Text style={styles.text}>Danke! Dein Check-in für heute ist gespeichert.</Text>
+            {uebung && (
+              <Pressable onPress={() => onUebung(uebung.id)} hitSlop={12}>
+                <Text style={styles.textKnopf}>Deine Übung: {uebung.titel} ›</Text>
+              </Pressable>
+            )}
+          </View>
+          {vorschlag && (
+            <View style={styles.hinweis}>
+              <Text style={styles.kleintext}>Unser Vorschlag für dich</Text>
+              <Text style={[styles.zwischentitel, { marginTop: 0 }]}>{vorschlag.titel}</Text>
+              <Text style={styles.text}>{vorschlag.beschreibung}</Text>
+              <Knopf titel="Ja, Übung starten" onPress={() => onVorschlagAntwort(vorschlag.id, true)} />
+              <Knopf
+                titel="Nein, danke"
+                art="neben"
+                onPress={() => onVorschlagAntwort(vorschlag.id, false)}
+              />
+            </View>
           )}
-        </View>
+        </>
       ) : uebersprungen ? (
         <View style={styles.hinweis}>
           <Text style={styles.text}>Du hast den Check-in für heute übersprungen.</Text>
