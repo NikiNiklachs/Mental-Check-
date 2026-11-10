@@ -90,7 +90,7 @@ Kurze Tagesreflexion per Ankreuzen, plus optionale Notiz zu:
 
 1. **Start** (unten links): Gruß, Check-in-Karte, Übungsvorschlag, anstehende Sporteinheit aus dem Kalender.
 2. **Kalender:** Trainings und Wettkämpfe (Woche, Monat, Jahr), Check vor und Kurz-Evaluation nach der Einheit.
-3. **Übungen:** Audioübungen (z. B. Visualisierung, Atemübungen, Self-Talk) und Schreibübungen „wie auf dem Papier“ (z. B. eigene Self-Talk-Sätze formulieren). Schreibübungen werden in der App ausgefüllt, die Antworten bleiben nur lokal auf dem Gerät.
+3. **Übungen:** Audioübungen (z. B. Visualisierung, Atemübungen, Self-Talk) und Schreibübungen „wie auf dem Papier“ (z. B. eigene Self-Talk-Sätze formulieren). Schreibübungen werden in der App ausgefüllt, die Antworten bleiben nur lokal auf dem Gerät. Jede Schreibübung hat zusätzlich „Drucken“ (leer oder mit eigenen Antworten). Datenschutz: Gedruckt bzw. geteilt wird nur, wenn die Athlet:in es selbst antippt, über den Druckdialog des Handys.
 4. **Routinen:** eigene Pre-Training- und Pre-Wettkampf-Routinen mit Ideen und Übungen aus der Bibliothek. In Version 1 als „Kommt bald“ sichtbar.
 5. **Mein Profil:** Verläufe und Durchschnitte, Reflexion/Tagebuch, Ziele, später Hinweise aus Mustern.
 
