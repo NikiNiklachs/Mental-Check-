@@ -96,6 +96,8 @@ Kurze Tagesreflexion per Ankreuzen, plus optionale Notiz zu:
 
 Einstellungen oben rechts. Mehr als fünf Knöpfe passen auf dem Handy schlecht.
 
+Auf jeder Unterseite (alles, was man angetippt hat) gibt es oben links „Zurück“.
+
 Die Bereiche sind verknüpft: Ein Check-in-Ergebnis kann direkt zu einer passenden Übung führen.
 
 ## Kalender
