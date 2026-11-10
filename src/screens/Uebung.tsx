@@ -1,6 +1,6 @@
 import { ScrollView, Text, View } from 'react-native';
 import { Uebung as UebungDaten } from '../uebungen';
-import { Knopf, styles } from '../ui';
+import { Knopf, ZurueckKnopf, styles } from '../ui';
 
 type Props = {
   uebung: UebungDaten;
@@ -11,6 +11,9 @@ type Props = {
 export default function Uebung({ uebung, onFertig }: Props) {
   return (
     <ScrollView contentContainerStyle={styles.seite}>
+      <View style={styles.kopfzeile}>
+        <ZurueckKnopf onPress={onFertig} />
+      </View>
       <Text style={styles.kleintext}>Übung</Text>
       <Text style={styles.titel}>{uebung.titel}</Text>
       <Text style={styles.text}>{uebung.beschreibung}</Text>

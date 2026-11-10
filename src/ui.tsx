@@ -93,6 +93,15 @@ export function MehrfachAuswahl({ optionen, gewaehlt, onWechsel }: MehrfachProps
   );
 }
 
+// „‹ Zurück“ oben links, auf jeder Unterseite gleich.
+export function ZurueckKnopf({ onPress }: { onPress: () => void }) {
+  return (
+    <Pressable onPress={onPress} hitSlop={12}>
+      <Text style={styles.textKnopf}>‹ Zurück</Text>
+    </Pressable>
+  );
+}
+
 type HakenProps = {
   text: string;
   an: boolean;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { CheckIn as CheckInDaten, Tagesart, checkInSpeichern, heute } from '../speicher';
-import { Auswahl, Knopf, farben, styles } from '../ui';
+import { Auswahl, Knopf, ZurueckKnopf, farben, styles } from '../ui';
 
 // Fünfstufige Skala: angezeigt werden nur Worte, gespeichert wird die Zahl 1–5.
 const NIEDRIG_HOCH = ['sehr niedrig', 'niedrig', 'mittel', 'hoch', 'sehr hoch'];
@@ -109,13 +109,8 @@ export default function CheckIn({ onFertig, onSpaeter }: Props) {
   return (
     <ScrollView contentContainerStyle={styles.seite}>
       <View style={styles.kopfzeile}>
-        {nummer > 0 ? (
-          <Pressable onPress={zurueck} hitSlop={12}>
-            <Text style={styles.textKnopf}>‹ Zurück</Text>
-          </Pressable>
-        ) : (
-          <View />
-        )}
+        {/* Bei der ersten Frage führt „Zurück“ zur Startseite. */}
+        <ZurueckKnopf onPress={nummer > 0 ? zurueck : onSpaeter} />
         <Pressable onPress={onSpaeter} hitSlop={12}>
           <Text style={styles.textKnopf}>Später</Text>
         </Pressable>

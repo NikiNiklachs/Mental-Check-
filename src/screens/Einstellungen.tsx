@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { Einstellungen as EinstellungenDaten, Einwilligung, allesLoeschen } from '../speicher';
-import { Knopf, styles } from '../ui';
+import { Knopf, ZurueckKnopf, styles } from '../ui';
 
 type Props = {
   einwilligung: Einwilligung;
@@ -32,6 +32,9 @@ export default function Einstellungen({
 
   return (
     <ScrollView contentContainerStyle={styles.seite}>
+      <View style={styles.kopfzeile}>
+        <ZurueckKnopf onPress={onZurueck} />
+      </View>
       <Text style={styles.titel}>Einstellungen</Text>
 
       <Text style={styles.zwischentitel}>Check-out</Text>
@@ -78,7 +81,6 @@ export default function Einstellungen({
         />
       )}
 
-      <Knopf titel="Zurück" art="neben" onPress={onZurueck} />
     </ScrollView>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { CheckOut as CheckOutDaten, checkOutSpeichern, heute } from '../speicher';
-import { Auswahl, Knopf, MehrfachAuswahl, farben, styles } from '../ui';
+import { Auswahl, Knopf, ZurueckKnopf, MehrfachAuswahl, farben, styles } from '../ui';
 
 const ZUFRIEDENHEIT = ['sehr unzufrieden', 'unzufrieden', 'mittel', 'zufrieden', 'sehr zufrieden'].map(
   (text, i) => ({ wert: i + 1, text }),
@@ -86,13 +86,8 @@ export default function CheckOut({ onFertig, onSpaeter }: Props) {
   return (
     <ScrollView contentContainerStyle={styles.seite} keyboardShouldPersistTaps="handled">
       <View style={styles.kopfzeile}>
-        {nummer > 0 ? (
-          <Pressable onPress={zurueck} hitSlop={12}>
-            <Text style={styles.textKnopf}>‹ Zurück</Text>
-          </Pressable>
-        ) : (
-          <View />
-        )}
+        {/* Bei der ersten Frage führt „Zurück“ zur Startseite. */}
+        <ZurueckKnopf onPress={nummer > 0 ? zurueck : onSpaeter} />
         <Pressable onPress={onSpaeter} hitSlop={12}>
           <Text style={styles.textKnopf}>Später</Text>
         </Pressable>
