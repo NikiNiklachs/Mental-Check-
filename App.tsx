@@ -138,11 +138,11 @@ export default function App() {
         text="Hier trägst du bald deine Trainings und Wettkämpfe ein oder lädst den Plan deines Vereins."
       />
     );
-  } else if (seite === 'verlauf') {
+  } else if (seite === 'profil') {
     inhalt = (
       <KommtBald
-        titel="Verlauf"
-        text="Hier siehst du bald, wie sich deine Check-ins über die Zeit entwickeln."
+        titel="Mein Profil"
+        text="Hier siehst du bald deine Verläufe und Durchschnitte, zum Beispiel wie sich deine Check-ins über die Zeit entwickeln."
       />
     );
   } else if (seite === 'checkout') {
@@ -216,7 +216,7 @@ export default function App() {
   return (
     <View style={{ flex: 1, backgroundColor: farben.hintergrund }}>
       <View style={{ flex: 1 }}>{inhalt}</View>
-      {(seite === 'start' || seite === 'uebungen' || seite === 'kalender' || seite === 'verlauf') && (
+      {(seite === 'start' || seite === 'uebungen' || seite === 'kalender' || seite === 'profil') && (
         <Leiste aktiv={seite} onWahl={setSeite} />
       )}
       <StatusBar style="auto" />

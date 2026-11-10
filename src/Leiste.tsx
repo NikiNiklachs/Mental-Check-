@@ -1,14 +1,14 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { farben } from './ui';
 
-export type Bereich = 'start' | 'uebungen' | 'kalender' | 'verlauf';
+export type Bereich = 'start' | 'uebungen' | 'kalender' | 'profil';
 
-// Routinen kommen erst nach Version 1 dazu. Der Name „Verlauf“ ist noch nicht beschlossen.
+// Routinen kommen erst nach Version 1 dazu.
 const BEREICHE: { wert: Bereich; text: string }[] = [
   { wert: 'start', text: 'Start' },
   { wert: 'uebungen', text: 'Übungen' },
   { wert: 'kalender', text: 'Kalender' },
-  { wert: 'verlauf', text: 'Verlauf' },
+  { wert: 'profil', text: 'Mein Profil' },
 ];
 
 type Props = {

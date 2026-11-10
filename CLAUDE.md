@@ -43,7 +43,7 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 - Widerruf löscht alle Tage vom ersten Tag bis heute, danach Einwilligung und ersten Tag.
 - Wo kein sicherer Speicher da ist (z. B. Web-Vorschau in Snack), läuft die App im Testmodus und speichert nur im Arbeitsspeicher.
 - Altersabfrage nur als Gruppe („16 oder älter“ / „unter 16“), kein Geburtsdatum (datensparsam). Elternzustimmung per Ankreuzen, ohne Nachweis (rechtlich zu prüfen).
-- Navigation ohne Paket, einfache Seitenwechsel in `App.tsx`. Leiste unten (`src/Leiste.tsx`, seit 10.11.2026) mit Start, Übungen, Kalender, Verlauf. Kalender hat auf Niklas' Wunsch einen eigenen Punkt; Routinen kommen erst nach Version 1 dazu. Kalender und Verlauf sind vorerst „Kommt bald“-Seiten, Einstellungen bleiben oben rechts auf der Startseite.
+- Navigation ohne Paket, einfache Seitenwechsel in `App.tsx`. Leiste unten (`src/Leiste.tsx`, seit 10.11.2026) mit Start, Übungen, Kalender, Mein Profil. Kalender hat auf Niklas' Wunsch einen eigenen Punkt; Routinen kommen erst nach Version 1 dazu. Kalender und Mein Profil sind vorerst „Kommt bald“-Seiten, Einstellungen bleiben oben rechts auf der Startseite.
 - Tagesart wird im Check-in immer abgefragt, bis der Kalender da ist.
 - Skalenworte: Energie, Motivation, Fokus, Nervosität „sehr niedrig … sehr hoch“; Stimmung und Schlafqualität „sehr schlecht … sehr gut“.
 - Schlafdauer per Minus/Plus in halben Stunden (0–16 Std., Start bei 8).
@@ -101,7 +101,7 @@ Kurze Tagesreflexion per Ankreuzen, plus optionale Notiz zu:
 1. **Start** (unten links): zeigt die anstehende Sporteinheit aus dem Kalender. Antippen öffnet den vollständigen Kalender (Woche, Monat, Jahr).
 2. **Übungen:** Audioübungen, z. B. Visualisierung, Atemübungen, Self-Talk.
 3. **Routinen:** eigene Pre-Training- und Pre-Wettkampf-Routinen zusammenstellen (z. B. Atemübung, Musik, eigene Sprachaufnahme). Die App kann auf Wunsch Routinen vorschlagen.
-4. **Verläufe/Mustererkennung:** Name noch offen (Ideen: „Einblicke“, „Verlauf“, „Entwicklung“, „Mein Weg“). Zeigt Verläufe und automatische Hinweise, z. B. „Fokus schwächer nach mehreren Auswärtswettkämpfen“ oder „vor Wettkämpfen häufiger geringe Energie“.
+4. **Mein Profil** (Name beschlossen 10.11.2026): enthält Verläufe, Durchschnitte und Mustererkennung. Zeigt Verläufe und automatische Hinweise, z. B. „Fokus schwächer nach mehreren Auswärtswettkämpfen“ oder „vor Wettkämpfen häufiger geringe Energie“.
 
 Die Bereiche sind verknüpft: Ein Check-in-Ergebnis kann direkt zu einer passenden Übung führen.
 
@@ -116,6 +116,8 @@ Drei Quellen:
 - **Handy-Kalender** verbinden
 
 Jeder Eintrag hat eine Kategorie (z. B. Training, Wettkampf, Regeneration).
+
+Trainings und Spiele lassen sich per Antippen des Eintrags von der Athlet:in selbst bewerten (Wunsch 10.11.2026). Das ist getrennt vom Check-in und geschieht nicht automatisch. Offen: welche Fragen bzw. Skala die Bewertung hat.
 
 ## Spotify
 
@@ -147,6 +149,5 @@ Umsetzen, was technisch möglich ist: Songs in Routinen abspielen und mit eigene
   - schlechte Stimmung → kurze Reflexion / Musik aus eigener Routine
   - wenig oder schlechter Schlaf → Hinweis auf Regeneration, abends Entspannungsaudio
 - Antwortoptionen für den Check-out
-- Name für Bereich 4
 - Speicherort der Daten (nur auf dem Gerät oder verschlüsselte Cloud)
 - Weitere geplante Ideen ohne festes Konzept: Ziele nach Zielkategorien, Wochenreflexion
