@@ -90,7 +90,7 @@ Kurze Tagesreflexion per Ankreuzen, plus optionale Notiz zu:
 
 1. **Start** (unten links): Gruß, Check-in-Karte, Übungsvorschlag, anstehende Sporteinheit aus dem Kalender.
 2. **Kalender:** Trainings und Wettkämpfe (Woche, Monat, Jahr), Check vor und Kurz-Evaluation nach der Einheit.
-3. **Übungen:** Audioübungen, z. B. Visualisierung, Atemübungen, Self-Talk.
+3. **Übungen:** Audioübungen (z. B. Visualisierung, Atemübungen, Self-Talk) und Schreibübungen „wie auf dem Papier“ (z. B. eigene Self-Talk-Sätze formulieren). Schreibübungen werden in der App ausgefüllt, die Antworten bleiben nur lokal auf dem Gerät.
 4. **Routinen:** eigene Pre-Training- und Pre-Wettkampf-Routinen mit Ideen und Übungen aus der Bibliothek. In Version 1 als „Kommt bald“ sichtbar.
 5. **Mein Profil:** Verläufe und Durchschnitte, Reflexion/Tagebuch, Ziele, später Hinweise aus Mustern.
 
@@ -139,6 +139,7 @@ Die fünf Bausteine: Übungsbibliothek (Audio), Routine-Baukasten, Ziele, Reflex
 **Version 1: das tägliche Fundament**
 - Alles aus „Umfang der ersten Version“ oben. Täglicher Check-in in unter 1 Minute.
 - Übungsbibliothek mit Niklas' Audios: Visualisierung (z. B. Selbstwirksamkeits-/Selbstvertrauenserfahrung), Atmung aktivierend und beruhigend, Self-Talk.
+- Dazu erste Schreibübungen in der App (z. B. Self-Talk-Sätze), Antworten nur lokal gespeichert.
 - Neu: kurzer Check vor der Einheit (Energie, Nervosität, Motivation) und Kurz-Evaluation nach der Einheit. Beides hängt am Kalendereintrag, per Antippen, Auswahlfelder („Was lief gut? Was nicht? Was verbessere ich?“) plus optionales Freitextfeld.
 - Erste Verbindungen: hohe hinderliche Nervosität im Check vor dem Wettkampf schlägt direkt eine passende Atemübung vor; „Nervosität war zu hoch“ in der Evaluation ebenso.
 - Einfacher Verlauf in „Mein Profil“, Vorher/Nachher-Vergleich pro Einheit.
