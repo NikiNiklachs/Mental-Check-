@@ -86,12 +86,15 @@ Kurze Tagesreflexion per Ankreuzen, plus optionale Notiz zu:
 - Was war nicht gut?
 - Was kann/will ich besser machen?
 
-## Navigation (Leiste unten, 4 Bereiche)
+## Navigation (Leiste unten, 5 Bereiche, beschlossen 2026-11-10)
 
-1. **Start** (unten links): zeigt die anstehende Sporteinheit aus dem Kalender. Antippen öffnet den vollständigen Kalender (Woche, Monat, Jahr).
-2. **Übungen:** Audioübungen, z. B. Visualisierung, Atemübungen, Self-Talk.
-3. **Routinen:** eigene Pre-Training- und Pre-Wettkampf-Routinen zusammenstellen (z. B. Atemübung, Musik, eigene Sprachaufnahme). Die App kann auf Wunsch Routinen vorschlagen.
-4. **Verläufe/Mustererkennung:** Name noch offen (Ideen: „Einblicke“, „Verlauf“, „Entwicklung“, „Mein Weg“). Zeigt Verläufe und automatische Hinweise, z. B. „Fokus schwächer nach mehreren Auswärtswettkämpfen“ oder „vor Wettkämpfen häufiger geringe Energie“.
+1. **Start** (unten links): Gruß, Check-in-Karte, Übungsvorschlag, anstehende Sporteinheit aus dem Kalender.
+2. **Kalender:** Trainings und Wettkämpfe (Woche, Monat, Jahr), Check vor und Kurz-Evaluation nach der Einheit.
+3. **Übungen:** Audioübungen, z. B. Visualisierung, Atemübungen, Self-Talk.
+4. **Routinen:** eigene Pre-Training- und Pre-Wettkampf-Routinen mit Ideen und Übungen aus der Bibliothek. In Version 1 als „Kommt bald“ sichtbar.
+5. **Mein Profil:** Verläufe und Durchschnitte, Reflexion/Tagebuch, Ziele, später Hinweise aus Mustern.
+
+Einstellungen oben rechts. Mehr als fünf Knöpfe passen auf dem Handy schlecht.
 
 Die Bereiche sind verknüpft: Ein Check-in-Ergebnis kann direkt zu einer passenden Übung führen.
 
@@ -125,7 +128,35 @@ Umsetzen, was technisch möglich ist: Songs in Routinen abspielen und mit eigene
 - Einfacher Verlauf
 - Alle Daten nur lokal und verschlüsselt auf dem Gerät
 
-**Später:** Routinen-Baukasten, Spotify, eigene Sprachaufnahmen der Athlet:innen, automatische Mustererkennung, Excel-Import, Handy-Kalender verbinden
+**Später:** siehe Gesamtplan unten.
+
+## Gesamtplan (beschlossen 2026-11-10)
+
+Die fünf Bausteine: Übungsbibliothek (Audio), Routine-Baukasten, Ziele, Reflexion/Tagebuch, Kalender mit Kurz-Evaluation. Der große Unterschied zu anderen Apps: Die Bausteine sind miteinander verbunden. Niklas' Stimme in den Audios ist das Markenzeichen.
+
+**Version 1: das tägliche Fundament**
+- Alles aus „Umfang der ersten Version“ oben. Täglicher Check-in in unter 1 Minute.
+- Übungsbibliothek mit Niklas' Audios: Visualisierung (z. B. Selbstwirksamkeits-/Selbstvertrauenserfahrung), Atmung aktivierend und beruhigend, Self-Talk.
+- Neu: kurzer Check vor der Einheit (Energie, Nervosität, Motivation) und Kurz-Evaluation nach der Einheit. Beides hängt am Kalendereintrag, per Antippen, Auswahlfelder („Was lief gut? Was nicht? Was verbessere ich?“) plus optionales Freitextfeld.
+- Erste Verbindungen: hohe hinderliche Nervosität im Check vor dem Wettkampf schlägt direkt eine passende Atemübung vor; „Nervosität war zu hoch“ in der Evaluation ebenso.
+- Einfacher Verlauf in „Mein Profil“, Vorher/Nachher-Vergleich pro Einheit.
+- Sicherheitsnetz: bei mehreren sehr schlechten Tagen ein ruhiger Hinweis auf Hilfsangebote (Wortlaut und Schwelle noch offen).
+
+**Version 2: persönlich werden**
+- Ziele nach Zieltheorie: Prozess-, Leistungs- und Ergebnisziele, Zwischenziele, langfristige Ziele bis zur Vision. Jede Person entscheidet selbst, wie viele Ziele und welche Arten (nichts ist Pflicht). Hinter jeder Zielart steht ein kleines Sternchen: Antippen zeigt einen Satz, was die Zielart ist, plus ein Beispiel. Ein Prozessziel erscheint in der Evaluation („Hast du heute an X gearbeitet?“).
+- Routine-Baukasten (Pre-Training, Pre-Wettkampf): Schritt für Schritt aus Vorschlägen und Ideen wählen, Übungen aus der Übungsbibliothek lassen sich als Schritt einbauen. Steht ein Wettkampf im Kalender, schlägt die App die eigene Routine vor.
+- Eigene Aufnahmen der Athlet:innen (Self-Talk-Cues, Visualisierung in eigenen Worten).
+- Wochenreflexion.
+- Erste Hinweise aus Mustern mit Empfehlung, z. B. „vor Wettkämpfen ist deine Energie oft niedriger“.
+
+**Version 3: tiefer auswerten und teilen**
+- Ausgebaute Mustererkennung, die von sich aus Hinweise gibt (z. B. Fokus nach drei Auswärtswettkämpfen in Folge schwächer).
+- PDF-Export, den die Athlet:in selbst startet und teilt (z. B. für Sitzungen).
+- Geprüfte Fragebögen, Spotify, Excel-Import, Handy-Kalender verbinden.
+
+**Reihenfolge:** Ziele, Routinen und Muster bauen auf Kalender und Evaluationen auf. Muster brauchen einige Wochen Daten.
+
+**Datenschutz:** Eigene Sprachaufnahmen bleiben nur auf dem Gerät. Mustererkennung läuft lokal. PDF-Export nur auf Wunsch der Athlet:in.
 
 ## Offene Punkte
 
@@ -137,6 +168,5 @@ Umsetzen, was technisch möglich ist: Songs in Routinen abspielen und mit eigene
   - schlechte Stimmung → kurze Reflexion / Musik aus eigener Routine
   - wenig oder schlechter Schlaf → Hinweis auf Regeneration, abends Entspannungsaudio
 - Antwortoptionen für den Check-out
-- Name für Bereich 4
 - Speicherort der Daten (nur auf dem Gerät oder verschlüsselte Cloud)
 - Weitere geplante Ideen ohne festes Konzept: Ziele nach Zielkategorien, Wochenreflexion
