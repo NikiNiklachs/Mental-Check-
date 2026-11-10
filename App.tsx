@@ -138,6 +138,13 @@ export default function App() {
         text="Hier trägst du bald deine Trainings und Wettkämpfe ein oder lädst den Plan deines Vereins."
       />
     );
+  } else if (seite === 'routinen') {
+    inhalt = (
+      <KommtBald
+        titel="Routinen"
+        text="Hier stellst du bald deine eigenen Routinen vor Training und Wettkampf zusammen."
+      />
+    );
   } else if (seite === 'profil') {
     inhalt = (
       <KommtBald
@@ -216,7 +223,11 @@ export default function App() {
   return (
     <View style={{ flex: 1, backgroundColor: farben.hintergrund }}>
       <View style={{ flex: 1 }}>{inhalt}</View>
-      {(seite === 'start' || seite === 'uebungen' || seite === 'kalender' || seite === 'profil') && (
+      {(seite === 'start' ||
+        seite === 'kalender' ||
+        seite === 'uebungen' ||
+        seite === 'routinen' ||
+        seite === 'profil') && (
         <Leiste aktiv={seite} onWahl={setSeite} />
       )}
       <StatusBar style="auto" />

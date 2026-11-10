@@ -1,13 +1,13 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { farben } from './ui';
 
-export type Bereich = 'start' | 'uebungen' | 'kalender' | 'profil';
+export type Bereich = 'start' | 'kalender' | 'uebungen' | 'routinen' | 'profil';
 
-// Routinen kommen erst nach Version 1 dazu.
 const BEREICHE: { wert: Bereich; text: string }[] = [
   { wert: 'start', text: 'Start' },
-  { wert: 'uebungen', text: 'Übungen' },
   { wert: 'kalender', text: 'Kalender' },
+  { wert: 'uebungen', text: 'Übungen' },
+  { wert: 'routinen', text: 'Routinen' },
   { wert: 'profil', text: 'Mein Profil' },
 ];
 
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: farben.akzent,
   },
   text: {
-    fontSize: 14,
+    fontSize: 13,
     color: farben.grau,
   },
   textAn: {
