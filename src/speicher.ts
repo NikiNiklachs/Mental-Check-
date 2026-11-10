@@ -12,6 +12,7 @@ const SCHLUESSEL_ERSTER_TAG = 'erster_tag';
 const SCHLUESSEL_EINSTELLUNGEN = 'einstellungen';
 const checkInSchluessel = (datum: string) => `checkin_${datum}`;
 const checkOutSchluessel = (datum: string) => `checkout_${datum}`;
+const schreibSchluessel = (id: string) => `schreiben_${id}`;
 
 export type Altersgruppe = 'ab16' | 'unter16';
 
@@ -146,8 +147,19 @@ export async function einstellungenSpeichern(einstellungen: Einstellungen): Prom
   await schreiben(SCHLUESSEL_EINSTELLUNGEN, JSON.stringify(einstellungen));
 }
 
-// Widerruf: löscht die Einwilligung, die Einstellungen und jeden Check-in und Check-out seit dem ersten Tag.
-export async function allesLoeschen(): Promise<void> {
+// Antworten einer Schreibübung, eine pro Frage. Werden beim erneuten Ausfüllen überschrieben.
+export async function schreibuebungLaden(id: string): Promise<string[]> {
+  const text = await lesen(schreibSchluessel(id));
+  return text ? (JSON.parse(text) as string[]) : [];
+}
+
+export async function schreibuebungSpeichern(id: string, antworten: string[]): Promise<void> {
+  await schreiben(schreibSchluessel(id), JSON.stringify(antworten));
+}
+
+// Widerruf: löscht die Einwilligung, die Einstellungen, die Schreibübungen und jeden Check-in und Check-out seit dem ersten Tag.
+export async function allesLoeschen(schreibuebungen: string[]): Promise<void> {
+  for (const id of schreibuebungen) await loeschen(schreibSchluessel(id));
   const ersterTag = await lesen(SCHLUESSEL_ERSTER_TAG);
   if (ersterTag) {
     const tag = new Date(`${ersterTag}T00:00:00`);

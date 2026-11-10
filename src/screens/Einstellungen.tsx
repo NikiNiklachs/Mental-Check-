@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { Einstellungen as EinstellungenDaten, Einwilligung, allesLoeschen } from '../speicher';
+import { UEBUNGEN } from '../uebungen';
 import { Knopf, ZurueckKnopf, styles } from '../ui';
 
 type Props = {
@@ -23,7 +24,7 @@ export default function Einstellungen({
 
   async function widerrufen() {
     setLoeschtGerade(true);
-    await allesLoeschen();
+    await allesLoeschen(UEBUNGEN.filter((u) => u.art === 'schreiben').map((u) => u.id));
     onGeloescht();
   }
 
