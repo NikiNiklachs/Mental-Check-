@@ -158,6 +158,15 @@ Die fünf Bausteine: Übungsbibliothek (Audio), Routine-Baukasten, Ziele, Reflex
 
 **Datenschutz:** Eigene Sprachaufnahmen bleiben nur auf dem Gerät. Mustererkennung läuft lokal. PDF-Export nur auf Wunsch der Athlet:in.
 
+## Für alle Sportarten und Kontakt zu Niklas (beschlossen 2026-11-10)
+
+- Neutrale Wörter, die in jeder Sportart passen (z. B. „Einheit“ und „Wettkampf“ statt „Spiel“ oder „Match“).
+- Die App funktioniert vollständig ohne Verein und ohne Trainer:in.
+- Knopf „Mit Niklas arbeiten“: nur ein Link zu Webseite oder E-Mail, es werden keine Daten übertragen. Platz: als Karte in „Mein Profil“ und als Punkt in den Einstellungen.
+- Keine Coaching-Werbung, die an schlechte Werte gekoppelt ist. Das Sicherheitsnetz zeigt nur neutrale Hilfsangebote, getrennt vom Kontakt zu Niklas.
+- Kein In-App-Kauf für Coaching. Das Preismodell der App wird später entschieden.
+- Die rechtliche Prüfung umfasst auch die Berufsbezeichnung in der App.
+
 ## Offene Punkte
 
 - Zuordnung Check-in-Wert → vorgeschlagene Maßnahme. Bisheriger Entwurf (noch nicht beschlossen):
