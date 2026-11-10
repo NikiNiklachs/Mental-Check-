@@ -22,7 +22,7 @@ export type Einwilligung = {
   elternEinverstanden: boolean;
 };
 
-export type Tagesart = 'pausentag' | 'spieltag' | 'trainingstag';
+export type Tagesart = 'pausentag' | 'wettkampftag' | 'trainingstag';
 
 // Skalenwerte werden als Zahl 1–5 gespeichert (1 = sehr niedrig, 5 = sehr hoch).
 // Übersprungene Fragen fehlen im gespeicherten Check-in.

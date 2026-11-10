@@ -44,7 +44,7 @@ export default function Datenschutz({ onFertig }: Props) {
       <Text style={styles.zwischentitel}>Was die App speichert</Text>
       <Text style={styles.text}>
         Deine Antworten im täglichen Check-in (zum Beispiel Energie, Stimmung, Schlaf und am
-        Spieltag deine Nervosität), die Art des Tages, deine Altersgruppe und wann du zugestimmt
+        Wettkampftag deine Nervosität), die Art des Tages, deine Altersgruppe und wann du zugestimmt
         hast.
       </Text>
 

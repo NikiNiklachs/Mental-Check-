@@ -24,7 +24,7 @@ const TAGESART: Schritt = {
   optionen: [
     { wert: 'pausentag', text: 'Pausentag' },
     { wert: 'trainingstag', text: 'Trainingstag' },
-    { wert: 'spieltag', text: 'Spieltag' },
+    { wert: 'wettkampftag', text: 'Wettkampftag' },
   ],
 };
 
@@ -37,7 +37,7 @@ const TAEGLICH: Schritt[] = [
   { feld: 'schlafqualitaet', frage: 'Wie gut hast du geschlafen?', optionen: skala(SCHLECHT_GUT) },
 ];
 
-const SPIELTAG: Schritt[] = [
+const WETTKAMPFTAG: Schritt[] = [
   { feld: 'nervositaet', frage: 'Wie nervös bist du?', optionen: skala(NIEDRIG_HOCH) },
   {
     feld: 'nervositaetRichtung',
@@ -59,8 +59,8 @@ export default function CheckIn({ onFertig, onSpaeter }: Props) {
   const [schlafStunden, setSchlafStunden] = useState(8);
   const [nummer, setNummer] = useState(0);
 
-  // Die Fragen zur Nervosität gibt es nur am Spieltag.
-  const schritte = [TAGESART, ...TAEGLICH, ...(antworten.tagesart === 'spieltag' ? SPIELTAG : [])];
+  // Die Fragen zur Nervosität gibt es nur am Wettkampftag.
+  const schritte = [TAGESART, ...TAEGLICH, ...(antworten.tagesart === 'wettkampftag' ? WETTKAMPFTAG : [])];
   const schritt = schritte[nummer] as Schritt | undefined;
 
   function weiter() {
@@ -74,8 +74,8 @@ export default function CheckIn({ onFertig, onSpaeter }: Props) {
   function waehlen(feld: Feld, wert: Antworten[Feld]) {
     setAntworten((a) => {
       const neu = { ...a, [feld]: wert };
-      // Wer vom Spieltag auf einen anderen Tag wechselt, hat keine Nervositätsangaben.
-      if (feld === 'tagesart' && wert !== 'spieltag') {
+      // Wer vom Wettkampftag auf einen anderen Tag wechselt, hat keine Nervositätsangaben.
+      if (feld === 'tagesart' && wert !== 'wettkampftag') {
         delete neu.nervositaet;
         delete neu.nervositaetRichtung;
       }

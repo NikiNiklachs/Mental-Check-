@@ -57,7 +57,7 @@ Eine App, die Athlet:innen im Leistungssport hilft, mental stabiler und leistung
 ## Umsetzung Übungsvorschlag und Check-out (Stand 28.10.2026, Vorschlag, wartet auf Niklas' Bestätigung)
 
 - Übungen als Platzhalter ohne Ton in `src/uebungen.ts`: Box-Breathing, aktivierende Atmung, Fokus-Cue, Self-Talk, kurze Reflexion, Regeneration, Visualisierung.
-- Vorschlag nach dem Check-in: „niedrig“ heißt Wert 1 oder 2. Reihenfolge bei mehreren: hinderliche Nervosität → Box-Breathing, Energie → aktivierende Atmung, Fokus → Fokus-Cue, Motivation → Self-Talk, Stimmung → Reflexion, Schlaf unter 6 Std. oder schlecht → Regeneration. Sonst nur am Spieltag Visualisierung, an anderen Tagen kein Vorschlag.
+- Vorschlag nach dem Check-in: „niedrig“ heißt Wert 1 oder 2. Reihenfolge bei mehreren: hinderliche Nervosität → Box-Breathing, Energie → aktivierende Atmung, Fokus → Fokus-Cue, Motivation → Self-Talk, Stimmung → Reflexion, Schlaf unter 6 Std. oder schlecht → Regeneration. Sonst nur am Wettkampftag Visualisierung, an anderen Tagen kein Vorschlag.
 - Nach dem Speichern des Check-ins geht es direkt zur Startseite (Wunsch von Niklas, 10.11.2026). Der Vorschlag erscheint dort als Karte mit „Ja, Übung starten“ / „Nein, danke“, bis er beantwortet ist.
 - Annehmen/Ablehnen wird im Check-in des Tages gespeichert (`vorschlag`, `vorschlagAntwort`). Eine angenommene Übung bleibt auf der Startseite erreichbar.
 - Check-out: ab 19:00 Uhr (in den Einstellungen 12–23 Uhr einstellbar, Eintrag `einstellungen`), öffnet sich einmal am Tag von selbst, sonst Karte auf der Startseite. Gespeichert als `checkout_JJJJ-MM-TT`, beim Widerruf mitgelöscht.
@@ -128,7 +128,7 @@ Umsetzen, was technisch möglich ist: Songs in Routinen abspielen und mit eigene
 **In Version 1:**
 - Datenschutz beim ersten Start: Einwilligung, Altersabfrage, Widerruf mit vollständiger Löschung
 - Check-in mit den täglichen Fragen, am Wettkampftag zusätzlich Nervosität
-- Tagesart im Check-in: Geht aus dem Kalender nicht hervor, welche Art Tag ist, fragt der Check-in per Ankreuzen „Pausentag, Spieltag oder Trainingstag?“ (Annahme: Spieltag = Wettkampf, Pausentag = Regeneration)
+- Tagesart im Check-in: Geht aus dem Kalender nicht hervor, welche Art Tag ist, fragt der Check-in per Ankreuzen „Pausentag, Trainingstag oder Wettkampftag?“ (seit 10.11.2026 „Wettkampftag“ statt „Spieltag“, passend für alle Sportarten, Pausentag = Regeneration)
 - Maßnahmenvorschlag nach dem Check-in (Annehmen/Ablehnen wird gespeichert)
 - Check-out
 - Übungen: einige Audios, selbst aufgenommen vom Entwickler

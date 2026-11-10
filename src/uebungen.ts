@@ -53,7 +53,7 @@ export function uebungFinden(id: string | undefined): Uebung | undefined {
 const niedrig = (wert: number | undefined) => wert !== undefined && wert <= 2;
 
 // Wählt eine Übung zum Check-in. Sind mehrere Werte niedrig, gilt die Reihenfolge unten.
-// Übersprungene Fragen zählen nicht. Ist nichts auffällig, gibt es nur am Spieltag einen Vorschlag.
+// Übersprungene Fragen zählen nicht. Ist nichts auffällig, gibt es nur am Wettkampftag einen Vorschlag.
 export function uebungVorschlagen(c: CheckIn): Uebung | undefined {
   let id: string | undefined;
   if (c.nervositaetRichtung === 'hinderlich') id = 'box_atmung';
@@ -63,6 +63,6 @@ export function uebungVorschlagen(c: CheckIn): Uebung | undefined {
   else if (niedrig(c.stimmung)) id = 'reflexion';
   else if ((c.schlafStunden !== undefined && c.schlafStunden < 6) || niedrig(c.schlafqualitaet))
     id = 'regeneration';
-  else if (c.tagesart === 'spieltag') id = 'visualisierung';
+  else if (c.tagesart === 'wettkampftag') id = 'visualisierung';
   return uebungFinden(id);
 }
