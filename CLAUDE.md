@@ -90,11 +90,13 @@ Kurze Tagesreflexion per Ankreuzen, plus optionale Notiz zu:
 
 1. **Start** (unten links): Gruß, Check-in-Karte, Übungsvorschlag, anstehende Sporteinheit aus dem Kalender.
 2. **Kalender:** Trainings und Wettkämpfe (Woche, Monat, Jahr), Check vor und Kurz-Evaluation nach der Einheit.
-3. **Übungen:** Audioübungen, z. B. Visualisierung, Atemübungen, Self-Talk.
+3. **Übungen:** Audioübungen (z. B. Visualisierung, Atemübungen, Self-Talk) und Schreibübungen „wie auf dem Papier“ (z. B. eigene Self-Talk-Sätze formulieren). Schreibübungen werden in der App ausgefüllt, die Antworten bleiben nur lokal auf dem Gerät. Jede Schreibübung hat zusätzlich „Drucken“ (leer oder mit eigenen Antworten). Datenschutz: Gedruckt bzw. geteilt wird nur, wenn die Athlet:in es selbst antippt, über den Druckdialog des Handys.
 4. **Routinen:** eigene Pre-Training- und Pre-Wettkampf-Routinen mit Ideen und Übungen aus der Bibliothek. In Version 1 als „Kommt bald“ sichtbar.
 5. **Mein Profil:** Verläufe und Durchschnitte, Reflexion/Tagebuch, Ziele, später Hinweise aus Mustern.
 
 Einstellungen oben rechts. Mehr als fünf Knöpfe passen auf dem Handy schlecht.
+
+Auf jeder Unterseite (alles, was man angetippt hat) gibt es oben links „Zurück“.
 
 Die Bereiche sind verknüpft: Ein Check-in-Ergebnis kann direkt zu einer passenden Übung führen.
 
@@ -137,6 +139,7 @@ Die fünf Bausteine: Übungsbibliothek (Audio), Routine-Baukasten, Ziele, Reflex
 **Version 1: das tägliche Fundament**
 - Alles aus „Umfang der ersten Version“ oben. Täglicher Check-in in unter 1 Minute.
 - Übungsbibliothek mit Niklas' Audios: Visualisierung (z. B. Selbstwirksamkeits-/Selbstvertrauenserfahrung), Atmung aktivierend und beruhigend, Self-Talk.
+- Dazu erste Schreibübungen in der App (z. B. Self-Talk-Sätze), Antworten nur lokal gespeichert.
 - Neu: kurzer Check vor der Einheit (Energie, Nervosität, Motivation) und Kurz-Evaluation nach der Einheit. Beides hängt am Kalendereintrag, per Antippen, Auswahlfelder („Was lief gut? Was nicht? Was verbessere ich?“) plus optionales Freitextfeld.
 - Erste Verbindungen: hohe hinderliche Nervosität im Check vor dem Wettkampf schlägt direkt eine passende Atemübung vor; „Nervosität war zu hoch“ in der Evaluation ebenso.
 - Einfacher Verlauf in „Mein Profil“, Vorher/Nachher-Vergleich pro Einheit.
@@ -157,6 +160,15 @@ Die fünf Bausteine: Übungsbibliothek (Audio), Routine-Baukasten, Ziele, Reflex
 **Reihenfolge:** Ziele, Routinen und Muster bauen auf Kalender und Evaluationen auf. Muster brauchen einige Wochen Daten.
 
 **Datenschutz:** Eigene Sprachaufnahmen bleiben nur auf dem Gerät. Mustererkennung läuft lokal. PDF-Export nur auf Wunsch der Athlet:in.
+
+## Für alle Sportarten und Kontakt zu Niklas (beschlossen 2026-11-10)
+
+- Neutrale Wörter, die in jeder Sportart passen (z. B. „Einheit“ und „Wettkampf“ statt „Spiel“ oder „Match“).
+- Die App funktioniert vollständig ohne Verein und ohne Trainer:in.
+- Knopf „Mit Niklas arbeiten“: nur ein Link zu Webseite oder E-Mail, es werden keine Daten übertragen. Platz: als Karte in „Mein Profil“ und als Punkt in den Einstellungen.
+- Keine Coaching-Werbung, die an schlechte Werte gekoppelt ist. Das Sicherheitsnetz zeigt nur neutrale Hilfsangebote, getrennt vom Kontakt zu Niklas.
+- Kein In-App-Kauf für Coaching. Das Preismodell der App wird später entschieden.
+- Die rechtliche Prüfung umfasst auch die Berufsbezeichnung in der App.
 
 ## Offene Punkte
 
